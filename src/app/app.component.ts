@@ -5,7 +5,9 @@ import { Component, OnInit } from '@angular/core';
   template: ` 
   <app-header></app-header>
   <app-home></app-home>
+  <app-footer></app-footer>
   <router-outlet></router-outlet>
+
   
 `,
   //templateUrl: "./app.component.html",
