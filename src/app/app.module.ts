@@ -7,8 +7,8 @@ import { FlightHistoryComponent } from './pages/flight-history/flight-history.co
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FlightBookingComponent } from './DashBoard/flight-booking/flight-booking.component';
-import { InvoiceComponent } from './DashBoard/invoice/invoice.component';
+import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
+import { InvoiceComponent } from './pages/invoice/invoice.component';
 
 @NgModule({
   declarations: [
