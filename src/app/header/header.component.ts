@@ -41,7 +41,7 @@ import { Router } from '@angular/router';
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item">
-          <h3 style="margin-bottom:5px; font-family:Georgia;" ><b>  HOME </b></h3>
+          <h3 style="margin-bottom:5px; font-family:Georgia;" routerLink="/"><b>  HOME </b></h3>
         </a>
   
         <a class="navbar-item">
@@ -65,7 +65,7 @@ import { Router } from '@angular/router';
                   Contact
                 </a>
                 <hr class="navbar-divider">
-                  <a class="navbar-item">
+                  <a class="navbar-item" routerLink="/report">
                   Report an issue
                   </a>
               </div>
@@ -75,10 +75,13 @@ import { Router } from '@angular/router';
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button is-primary" routerLink="/signup">
               <strong>Sign up</strong>
             </a>
-            <button (click)="goToPage('footer')"> Log In</button>
+          
+            <a class="button is-primary" routerLink="/login-page">
+              <strong>Login</strong>
+            </a>
           </div>
         </div>
       </div>
@@ -97,9 +100,7 @@ export class HeaderComponent implements OnInit {
   imageSrc = 'assets/Images/menu2.png'
   constructor( private router:Router) { }
 
-  goToPage(pageName:string):void{
-    this.router.navigate([`${pageName}`]);
-  }
+  
 
   ngOnInit(): void {
   }
