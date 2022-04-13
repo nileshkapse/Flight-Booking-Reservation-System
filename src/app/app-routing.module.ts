@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountSettingsComponent } from './dashboard/account-settings/account-settings.component';
-import { FlightHistoryComponent } from './dashboard/flight-history/flight-history.component';
+import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { FlightHistoryComponent } from './pages/flight-history/flight-history.component';
 
 const routes: Routes = [
   { path: 'flight-history', component: FlightHistoryComponent },
