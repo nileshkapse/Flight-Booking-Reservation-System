@@ -7,6 +7,8 @@ import { FlightHistoryComponent } from './pages/flight-history/flight-history.co
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FlightBookingComponent } from './DashBoard/flight-booking/flight-booking.component';
+import { InvoiceComponent } from './DashBoard/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AccountSettingsComponent,
     HeaderComponent,
     FooterComponent,
+    FlightBookingComponent,
+    InvoiceComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
