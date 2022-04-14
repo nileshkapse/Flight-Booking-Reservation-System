@@ -10,8 +10,8 @@ import { ReportComponent } from './pages/report/report.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { FlightHistoryComponent } from './pages/flight-history/flight-history.component';
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 
