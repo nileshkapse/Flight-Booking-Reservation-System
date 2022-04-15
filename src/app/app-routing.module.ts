@@ -10,6 +10,7 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'flight-booking', component: FlightBookingComponent },
   { path: 'flight-history', component: FlightHistoryComponent },
   { path: 'flight-details', component: FlightDetailsComponent },
+  { path: 'flight-moreDetails', component: DetailsComponent },
   { path: 'invoice', component: InvoiceComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
 ];
