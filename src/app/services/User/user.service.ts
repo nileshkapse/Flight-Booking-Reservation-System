@@ -55,37 +55,5 @@ export class UserService {
       username: user.username,
       password: user.password,
     });
-
-    /*
-    .subscribe(
-        (result: any) => {
-          console.log(result);
-
-          if (result.isDone) {
-            if (result.hasOwnProperty('isAuthorized')) {
-              console.log(result.msg);
-
-              const newUser: any = {
-                email: result.email,
-                id: result.id,
-                role: result.role,
-                username: result.username,
-                name: result.name,
-                token: result.token,
-                rememberMe: user.rememberMe,
-              };
-              this.subject.next(newUser);
-              this.user.push(newUser);
-            } else {
-              console.log('Login Successful');
-            }
-          } else {
-            console.log(result.msg);
-          }
-        },
-        (error) => {
-          console.log('Error Occured: ', error.error.msg);
-        }
-      );*/
   }
 }

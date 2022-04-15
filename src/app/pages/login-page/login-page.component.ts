@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginPageComponent implements OnInit {
   password: string;
   rememberMe: boolean;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.username = '';
     this.password = '';
     this.rememberMe = false;
@@ -51,6 +52,8 @@ export class LoginPageComponent implements OnInit {
         };
 
         this.userService.user.push(newUser);
+
+        this.router.navigate(['']);
       },
       (err) => console.log(err)
     );
