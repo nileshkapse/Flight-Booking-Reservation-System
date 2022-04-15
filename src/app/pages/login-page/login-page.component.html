@@ -1,59 +1,35 @@
-<h1 style="margin-left: 600px; margin-top: 100px; font-weight: bold">
-  Login Form
-</h1>
+<h1 style="margin-left: 600px; margin-top: 100px;  font-weight: bold;">Login Form</h1>
 
 <form action="/action_page.php" method="post">
   <div class="imgcontainer">
-    <img
-      src="assets/Images/login_icon.png"
-      alt="Avatar"
-      class="avatar"
-      style="height: 160px; width: 160px"
-    />
+    <img src="assets/Images/login_icon.png" alt="Avatar" class="avatar" style="height: 160px; width: 160px;">
   </div>
 
   <div class="container">
-    <form (submit)="handleFormSubmit($event)" ngNativeValidate>
-      <div>
-        <label for="uname" style="margin-left: 300px"><b>Username</b></label>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          name="uname"
-          [(ngModel)]="username"
-          required
-        />
-      </div>
+    <label for="uname" style="margin-left:300px;"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required >
 
-      <br />
-      <div>
-        <label for="psw1" style="margin-left: 300px"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw1"
-          [(ngModel)]="password"
-          required
-        />
-      </div>
-      <br />
-      <br />
-      <div>
-        <label style="margin-left: 300px; margin-top: 20px">
-          <input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
-          Remember me
-        </label>
-      </div>
-      <br />
+    <br>
+    <label for="psw1" style="margin-left:300px;"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw1" required>
+      
+    <br>
+    <br>
+    <label style="margin-left:300px; margin-top: 20px;">
+      <input type="checkbox" checked="checked" name="remember"> Remember me
+    </label>
+    <br>
 
-      <button type="submit">Login</button>
+    <button type="submit">Login</button>
 
-      <button
-        type="reset"
-        style="background-color: darkred; margin-left: 150px"
-      >
-        Cancel
-      </button>
-    </form>
+    <button type="submit" style="background-color: darkred; margin-left: 150px;">Cancel</button>
+  
+   
+  
   </div>
+
+ 
+    
+ 
+  
 </form>

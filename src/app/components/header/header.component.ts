@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/User/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,19 +8,7 @@ import { UserService } from 'src/app/services/User/user.service';
 })
 export class HeaderComponent implements OnInit {
   imageSrc = 'assets/Images/menu2.png';
-  user: any[];
+  constructor(private router: Router) {}
 
-  constructor(private userService: UserService) {
-    this.user = [];
-  }
-
-  ngOnInit(): void {
-    this.userService.getCurrentUser().subscribe((user) => {
-      this.user = user;
-    });
-  }
-
-  displayUser() {
-    console.log('user : ', this.user);
-  }
+  ngOnInit(): void {}
 }
