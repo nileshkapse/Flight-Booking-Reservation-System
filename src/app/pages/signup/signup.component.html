@@ -1,94 +1,36 @@
-<h1 style="margin-left: 600px; margin-top: 100px; font-weight: bold">
-  Sign Up
-</h1>
+<h1 style="margin-left: 600px; margin-top: 100px; font-weight: bold;">Sign Up</h1>
 <div class="imgcontainer">
-  <img
-    src="assets/Images/signup_icon.png"
-    alt="Avatar"
-    class="avatar"
-    style="height: 180px; width: 180px; margin-left: 560px"
-  />
+  <img src="assets/Images/signup_icon.png" alt="Avatar" class="avatar" style="height: 180px; width: 180px;margin-left: 560px ">
 </div>
-<form action="/action_page.php" style="border: 1px solid #ccc">
-  <div class="container">
-    <p style="font-weight: bold">Fill Form to Create an Account.</p>
-    <hr />
+<form action="/action_page.php" style="border:1px solid #ccc">
+  
 
-    <form (submit)="handleFormSubmit($event)" ngNativeValidate>
-      <div>
-        <label for="name"><b>Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          name="name"
-          [(ngModel)]="name"
-          required
-        />
-      </div>
+    <div class="container">
+      
+      <p style="font-weight: bold;"> Fill Form to Create an Account.</p>
+      <hr>
+  
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
 
-      <div>
-        <label for="email"><b>Email</b></label>
-        <input
-          type="email"
-          placeholder="Enter Email"
-          name="email"
-          [(ngModel)]="email"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="phone"><b>Phone Number</b></label>
-        <input
-          type="text"
-          pattern="^[0-9]{10}$"
-          placeholder="Enter Phone Number"
-          name="phone"
-          [(ngModel)]="phoneNo"
-        />
-      </div>
-      <div>
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          [(ngModel)]="password"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input
-          type="password"
-          placeholder="Repeat Password"
-          name="psw-repeat"
-          [(ngModel)]="repeatPassword"
-          required
-        />
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="remember"
-            [(ngModel)]="rememberMe"
-            style="margin-bottom: 15px"
-          />
-          Remember me
-        </label>
-      </div>
-
-      <p>
-        By creating an account you agree to our
-        <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
-      </p>
-
+      <label for="phone"><b>Phone Number</b></label>
+      <input type="number" placeholder="Enter Phone Number" name="phone" required>
+  
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+  
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+      
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+  
       <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
         <button type="submit" class="signupbtn">Sign Up</button>
-        <button type="reset" class="cancelbtn">Cancel</button>
       </div>
-    </form>
-  </div>
-</form>
+    </div>
+  </form>

@@ -19,7 +19,6 @@ const routes: Routes = [
   { path: 'flight-history', component: FlightHistoryComponent },
   { path: 'invoice', component: InvoiceComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
-  { path: '**', component: HomeComponent },
 ];
 
 @NgModule({
