@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 import { API_PATH } from 'src/app/constants/IMPData';
 import { User } from 'src/app/models/Models';
 
@@ -8,10 +8,15 @@ import { User } from 'src/app/models/Models';
   providedIn: 'root',
 })
 export class UserService {
-  user: User[];
+  user: any[];
+
+  subject = new Subject<any>();
 
   constructor(private http: HttpClient) {
     this.user = [];
+    this.subject.subscribe({
+      next: (v) => console.log(`observerA: ${v}`),
+    });
   }
 
   getCurrentUser() {
@@ -46,10 +51,41 @@ export class UserService {
   loginUser(user: any) {
     console.log('Login User');
 
-    if (user.password === '123') {
-      if (this.user.length === 0) this.user.push(user);
-    } else {
-      console.log('Please enter valid password');
-    }
+    return this.http.post(`${API_PATH}/auth/login`, {
+      username: user.username,
+      password: user.password,
+    });
+
+    /*
+    .subscribe(
+        (result: any) => {
+          console.log(result);
+
+          if (result.isDone) {
+            if (result.hasOwnProperty('isAuthorized')) {
+              console.log(result.msg);
+
+              const newUser: any = {
+                email: result.email,
+                id: result.id,
+                role: result.role,
+                username: result.username,
+                name: result.name,
+                token: result.token,
+                rememberMe: user.rememberMe,
+              };
+              this.subject.next(newUser);
+              this.user.push(newUser);
+            } else {
+              console.log('Login Successful');
+            }
+          } else {
+            console.log(result.msg);
+          }
+        },
+        (error) => {
+          console.log('Error Occured: ', error.error.msg);
+        }
+      );*/
   }
 }

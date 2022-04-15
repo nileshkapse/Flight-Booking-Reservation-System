@@ -131,7 +131,8 @@
       </div>
 
       <div *ngIf="user.length > 0" class="navbar-item">
-        {{ user[0].username }}
+        {{ user[0]?.username }} User
+        <button (click)="displayUser()">Display User</button>
       </div>
     </div>
   </div>

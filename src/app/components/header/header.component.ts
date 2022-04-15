@@ -19,4 +19,8 @@ export class HeaderComponent implements OnInit {
       this.user = user;
     });
   }
+
+  displayUser() {
+    console.log('user : ', this.user);
+  }
 }

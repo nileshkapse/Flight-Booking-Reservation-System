@@ -28,7 +28,32 @@ export class LoginPageComponent implements OnInit {
       rememberMe: this.rememberMe,
     };
 
-    this.userService.loginUser(newData);
+    this.userService.loginUser(newData).subscribe(
+      (result: any) => {
+        console.log(result);
+
+        if (result.isError) {
+          return console.log(result.msg);
+        }
+
+        if (result.hasOwnProperty('isAuthorized')) {
+          if (!result.isAuthorized) return console.log(result.msg);
+        }
+
+        const newUser: any = {
+          email: result.email,
+          id: result.id,
+          role: result.role,
+          username: result.username,
+          name: result.name,
+          token: result.token,
+          rememberMe: this.rememberMe,
+        };
+
+        this.userService.user.push(newUser);
+      },
+      (err) => console.log(err)
+    );
 
     console.log('Login Data: ', newData);
 

@@ -1,7 +1,9 @@
 export interface User {
-  id?: string;
+  id: string;
   username: string;
   name: string;
   email: string;
   rememberMe: boolean;
+  role: string;
+  token: string;
 }
