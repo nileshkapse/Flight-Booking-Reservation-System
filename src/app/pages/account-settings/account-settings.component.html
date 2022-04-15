@@ -1,0 +1,128 @@
+<div class="container">
+  <h3>Account Settings</h3>
+
+  <div class="card mt-4" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Update Account Details</h4>
+
+      <div class="mb-3 mt-4">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          placeholder="Username"
+        />
+      </div>
+
+      <div class="mb-3 mt-4">
+        <label for="name" class="form-label">Name</label>
+        <input
+          type="password"
+          class="form-control"
+          id="name"
+          placeholder="Name"
+        />
+      </div>
+
+      <div class="mb-3 mt-4">
+        <label for="date-of-birth" class="form-label">Date of Birth</label>
+        <input
+          type="date"
+          class="form-control"
+          id="date-of-birth"
+          placeholder="date-of-birth"
+        />
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="button" class="btn btn-primary">Update Details</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Change Password -->
+  <div class="card mt-4" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Change Password</h4>
+
+      <div class="mb-3 mt-4">
+        <label for="old-password" class="form-label">Old Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="old-password"
+          placeholder="Old Password"
+        />
+      </div>
+
+      <div class="mb-3 mt-4">
+        <label for="new-password" class="form-label">New Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="new-password"
+          placeholder="New Password"
+        />
+      </div>
+
+      <div class="mb-3 mt-4">
+        <label for="new-confirm-password" class="form-label"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          class="form-control"
+          id="new-confirm-password"
+          placeholder="Confirm Password"
+        />
+      </div>
+
+      <div class="d-grid mt-4">
+        <button type="button" class="btn btn-primary">Change Password</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Account -->
+  <div class="card mt-4" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Delete Account</h4>
+
+      <div class="mb-3 mt-4">
+        <label for="delete-account-password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="delete-account-password"
+          placeholder="Password"
+        />
+      </div>
+
+      <div class="form-check mt-3 mb-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="delete-account-confirmation-check"
+        />
+        <label class="form-check-label" for="delete-account-confirmation-check">
+          Sure to Delete Account
+        </label>
+      </div>
+
+      <div class="form-check mt-3 mb-3">
+        <input class="form-check-input" type="checkbox" id="agree-to-delete" />
+        <label class="form-check-label" for="agree-to-delete">
+          Agree that once the account is deleted all the flight booking data
+          will lost
+        </label>
+      </div>
+
+      <div class="d-grid mt-3">
+        <button type="button" class="btn btn-danger w-100">
+          Delete Account
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

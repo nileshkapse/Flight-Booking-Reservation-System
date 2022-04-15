@@ -1,0 +1,91 @@
+<div class="container">
+    <h3 class="mb-4">Flight booking Details</h3>
+    <div class="row g-4">
+      <div
+        class="col-12 col-sm-6 col-md-4"
+        *ngFor="let flight of flightDetails"
+      >
+        <div class="card m-3" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+          <img class="card-img-top" [src]="flight.imgSrc" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title font-weight-bold">{{ flight.flightName }}</h4>
+            <div class="card-text">
+              <h6
+                style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 20px;
+                  border-radius: 5px;
+                "
+              >
+                Source:
+                <span style="font-weight: 400">{{ flight.routeSource }}</span>
+              </h6>
+              <h6
+                style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                "
+              >
+                Destination:
+                <span style="font-weight: 400">{{
+                  flight.routeDestination
+                }}</span>
+              </h6>
+              <h6
+                style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                "
+              >
+                Date:
+                <span style="font-weight: 400">{{ flight.flightDate }}</span>
+              </h6>
+              <h6
+                style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                "
+              >
+                Total Seats:
+                <span style="font-weight: 400">{{ flight.totalSeats }}</span>
+              </h6>
+              <h6
+                style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                "
+              >
+                Total Remaining Seats:
+                <span style="font-weight: 400">{{ flight.remainingSeats }}</span>
+              </h6>
+              <h6
+                style="
+                  padding: 15px 10px;
+                  box-shadow: '0px 0px 7px #ccc';
+                  margin-top: 15px;
+                  border-radius: 5px;
+                "
+              >
+                Ticket Cost:
+                <span style="font-weight: 400">{{ flight.ticketCost }}</span>
+              </h6>
+            </div>
+  
+            <div class="d-grid mt-3">
+              <button class="btn btn-primary">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

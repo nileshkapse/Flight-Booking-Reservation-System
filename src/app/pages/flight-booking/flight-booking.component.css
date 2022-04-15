@@ -1,0 +1,197 @@
+/* You can add global styles to this file, and also import other style files */
+.section {
+	position: relative;
+	height: 100vh;
+}
+
+.section .section-center {
+	position: relative;
+	top: 45%;
+	left: 13%;
+	right: 50%;
+}
+
+#booking {
+	font-family: 'PT Sans', sans-serif;
+	background-image: url('../../../assets/img/background.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+.booking-form {
+	background: rgba(127, 205, 228, 0.7);
+	padding: 40px;
+	border-radius: 10px;
+}
+
+.booking-form .form-group {
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.booking-form .form-control {
+	background-color: #fff;
+	height: 50px;
+	color: #1b3dc8;
+	border: none;
+	font-size: 16px;
+	font-weight: 40px;
+	text-align: center;
+	-webkit-box-shadow: none;
+	box-shadow:blue;
+	border-radius: 40px;
+	padding: 0px 25px;
+}
+.form-control {
+display: block;
+width: 100%;
+height: 34px;
+padding: 6px 12px;
+font-size: 14px;
+line-height: 1.42857143;
+color: #ef0202;
+background-color: #ffffff;
+background-image: none;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+-webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+	color: rgba(36, 36, 247, 0.4);
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+	color: rgba(36, 36, 247, 0.4);
+}
+
+.booking-form .form-control::placeholder {
+	color: rgba(36, 36, 247, 0.4);
+}
+
+.booking-form input[type="date"].form-control:invalid {
+	color: rgba(36, 36, 247, 0.4);
+}
+
+.booking-form select.form-control {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.booking-form select.form-control+.select-arrow {
+	position: absolute;
+	right: left;
+	bottom: center;
+	width: 20px;
+	line-height: 25px;
+	height: center;
+	text-align: center;
+	pointer-events: none;
+	color: rgba(240, 31, 31, 0.3);
+	font-size: 14px;
+}
+
+.booking-form select.form-control+.select-arrow:after {
+	content: '\279C';
+	display: block;
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+.booking-form .form-label {
+	display:block;
+	margin-left: 40px;
+	margin-bottom: 10px;
+	font-weight: 400;
+	text-transform: uppercase;
+	line-height: 14px;
+	height: 24px;
+	font-size: 15px;
+	color: rgb(216, 30, 30);
+}
+
+.booking-form .form-checkbox input {
+	position: relative;
+	margin-left: 2px;
+    size:50px;
+}
+
+.booking-form .form-checkbox label {
+	position: relative;
+	padding-top: 2px;
+	padding-left: 40px;
+	font-weight: 400;
+	color: rgb(104, 29, 233);
+}
+
+.booking-form .form-checkbox label+label {
+	margin-left: 25px;
+}
+
+.booking-form .form-checkbox input+span {
+	position: absolute;
+	left: 2px;
+	top: 4px;
+	width: 20px;
+	height: 20px;
+	background: rgb(255, 255, 255);
+	border-radius: 70%;
+}
+
+.booking-form .form-checkbox input+span:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 30px;
+	height: 0px;
+	border-radius: 50%;
+	background-color: #ff0000;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.booking-form .form-checkbox input:not(:checked)+span:after {
+	opacity: 7;
+}
+
+.booking-form .form-checkbox input:checked+span:after {
+	opacity: 1;
+	width: 10px;
+	height: 10px;
+}
+
+.booking-form .form-btn {
+    position: relative;
+    margin-left: 30px;
+    margin-top: 35px;
+}
+
+.booking-form .submit-btn {
+	color: rgb(0, 0, 0);
+	background-color: #f23e3e;
+	font-weight: 40px;
+	height: 50px;
+	font-size: 14px;
+	border: black;
+	width: 100%;
+	border-radius: 40px;
+	text-transform: uppercase;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+	opacity: 1;
+}
