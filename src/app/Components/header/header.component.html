@@ -61,7 +61,11 @@
         </h3>
       </a>
 
-      <a class="navbar-item" routerLink="/flight-booking">
+      <a
+        *ngIf="user.length > 0"
+        class="navbar-item"
+        routerLink="/flight-booking"
+      >
         <h3 style="margin-bottom: 5px; font-family: Georgia">
           <b> BOOK FLIGHT </b>
         </h3>
@@ -83,12 +87,17 @@
         <div class="navbar-dropdown">
           <a class="navbar-item"> About </a>
           <a class="navbar-item"> Contact </a>
-          <hr class="navbar-divider" />
-          <a class="navbar-item" routerLink="/report"> Report an issue </a>
+          <div *ngIf="user.length > 0">
+            <hr class="navbar-divider" />
+            <a class="navbar-item" routerLink="/report"> Report an issue </a>
+          </div>
         </div>
       </div>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div
+        *ngIf="user.length > 0"
+        class="navbar-item has-dropdown is-hoverable"
+      >
         <a class="navbar-link">
           <h3 style="margin-bottom: 5px; font-family: Georgia">
             <b> Flight Management </b>
@@ -109,7 +118,7 @@
     </div>
 
     <div class="navbar-end">
-      <div class="navbar-item">
+      <div *ngIf="user.length === 0" class="navbar-item">
         <div class="buttons">
           <a class="button is-primary" routerLink="/signup">
             <strong>Sign up</strong>
@@ -119,6 +128,10 @@
             <strong>Login</strong>
           </a>
         </div>
+      </div>
+
+      <div *ngIf="user.length > 0" class="navbar-item">
+        {{ user[0].username }}
       </div>
     </div>
   </div>

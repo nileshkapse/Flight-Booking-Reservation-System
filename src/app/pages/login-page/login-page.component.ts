@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +11,7 @@ export class LoginPageComponent implements OnInit {
   password: string;
   rememberMe: boolean;
 
-  constructor() {
+  constructor(private userService: UserService) {
     this.username = '';
     this.password = '';
     this.rememberMe = false;
@@ -26,6 +27,8 @@ export class LoginPageComponent implements OnInit {
       password: this.password,
       rememberMe: this.rememberMe,
     };
+
+    this.userService.loginUser(newData);
 
     console.log('Login Data: ', newData);
 
