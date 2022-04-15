@@ -47,6 +47,10 @@ export class AccountSettingsComponent implements OnInit {
     };
 
     console.log(newData);
+
+    this.username = '';
+    this.name = '';
+    this.dateOfBirth = '';
   }
 
   handleChangePassword(event: Event) {
@@ -61,6 +65,10 @@ export class AccountSettingsComponent implements OnInit {
     };
 
     console.log(newData);
+
+    this.oldPassword = '';
+    this.password = '';
+    this.confirmPassword = '';
   }
 
   handleDeleteAccount(event: Event) {
@@ -73,5 +81,9 @@ export class AccountSettingsComponent implements OnInit {
     };
 
     console.log(newData);
+
+    this.deleteAccountPassword = '';
+    this.isSureToDelete = false;
+    this.isAgreeToDataLoss = false;
   }
 }
