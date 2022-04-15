@@ -16,6 +16,17 @@
 
     <form (submit)="handleFormSubmit($event)" ngNativeValidate>
       <div>
+        <label for="name"><b>Name</b></label>
+        <input
+          type="text"
+          placeholder="Enter Name"
+          name="name"
+          [(ngModel)]="name"
+          required
+        />
+      </div>
+
+      <div>
         <label for="email"><b>Email</b></label>
         <input
           type="email"
@@ -34,7 +45,6 @@
           placeholder="Enter Phone Number"
           name="phone"
           [(ngModel)]="phoneNo"
-          required
         />
       </div>
       <div>
