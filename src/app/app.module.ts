@@ -15,6 +15,7 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { FlightDetailsComponent } from './pages/flight-details/flight-details.co
     FlightBookingComponent,
     InvoiceComponent,
     FlightDetailsComponent,
+    DetailsComponent,
 
   ],
   imports: [BrowserModule, AppRoutingModule],
