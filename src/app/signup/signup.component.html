@@ -2,7 +2,7 @@
 <div class="imgcontainer">
   <img src="assets/Images/signup_icon.png" alt="Avatar" class="avatar" style="height: 180px; width: 180px;margin-left: 560px ">
 </div>
-<form action="/action_page.php" style="border:1px solid #ccc">
+<form action="/action_page.php" style="border:1px solid #ccc" >
   
 
     <div class="container">
@@ -11,7 +11,8 @@
       <hr>
   
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
+      <input type="text"  ngModel placeholder="Enter Email" name="email" required >
+      
 
       <label for="phone"><b>Phone Number</b></label>
       <input type="number" placeholder="Enter Phone Number" name="phone" required>
@@ -33,4 +34,6 @@
         <button type="submit" class="signupbtn">Sign Up</button>
       </div>
     </div>
+    
   </form>
+

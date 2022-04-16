@@ -28,6 +28,6 @@ import { ReportComponent } from './report/report.component';
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,SignupComponent]
 })
 export class AppModule { }
