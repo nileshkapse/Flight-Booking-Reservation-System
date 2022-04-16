@@ -2,10 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { HomeComponent } from './pages/home/home.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ReportComponent } from './pages/report/report.component';
@@ -16,7 +14,7 @@ import { HeaderComponent } from './Components/header/header.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
-
+import { AddFlightComponent } from './pages/add-flight/add-flight.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +28,7 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
     FooterComponent,
     FlightBookingComponent,
     InvoiceComponent,
+    AddFlightComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

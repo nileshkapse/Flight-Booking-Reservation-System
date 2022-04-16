@@ -52,6 +52,8 @@ import { Router } from '@angular/router';
              <h3 style="margin-bottom:5px; font-family:Georgia;" ><b> OFFERS </b></h3>
         </a>
 
+        
+
         <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
                <h3 style="margin-bottom:5px; font-family:Georgia;" ><b> MORE </b></h3>
