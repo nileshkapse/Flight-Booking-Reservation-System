@@ -1,27 +1,38 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSliderModule } from '@angular/material/slider';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
+
+import { HomeComponent } from './pages/home/home.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { ReportComponent } from './pages/report/report.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { FlightHistoryComponent } from './pages/flight-history/flight-history.component';
+import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
+import { HeaderComponent } from './Components/header/header.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
+import { InvoiceComponent } from './pages/invoice/invoice.component';
+
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
+    SignupComponent,
+    LoginPageComponent,
+    ReportComponent,
+    FlightHistoryComponent,
+    AccountSettingsComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    FlightBookingComponent,
+    InvoiceComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    MatSliderModule,
-    BrowserAnimationsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
