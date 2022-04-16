@@ -1,17 +1,25 @@
-<p style="font-weight: bolder; margin-left: 400px;margin-top: 7px; margin-bottom: 7px; font-size: 20px; color: cornflowerblue;" >ENTER FLIGHT DETAILS</p>
+<div class="All" style="background-image: url(assets/Images/cloud.jpg);">
+<p style="font-weight: bolder; margin-left: 230px;margin-top: 7px; margin-bottom: 7px; font-size: 22px; color: black;" >*ENTER FLIGHT DETAILS*</p>
 
-<div>
   <form action="/action_page.php">
-    <label for="fid">Flight ID</label>
+    <label for="fid" style="font-size: 18px; 
+             font-family: Georgia, 'Times New Roman', Times, serif; 
+             font-weight: bolder;  color: black;">Flight ID :</label>
     <input type="text" id="fid" name="ID" placeholder="Enter Flight ID...">
 
-    <label for="Fclass">Seat Class</label>
+    <label for="Fclass" style="font-size: 18px; 
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-weight: bolder; color: black;">Seat Class :</label>
     <input type="text" id="Fclass" name="flightClass" placeholder="Enter Seat Class...">
 
-    <label for="Fcapacity">Class Capacity</label>
+    <label for="Fcapacity" style="font-size: 18px; 
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-weight: bolder; color: black;">Class Capacity :</label>
     <input type="text" id="Fcapacity" name="flightClass" placeholder="Enter Class Capacity...">
 
-    <label for="origin">Origin</label>
+    <label for="origin" style="font-size: 18px; 
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-weight: bolder; color: black;">Origin :</label>
     <select id="origin" name="origin">
         <option value="Choose">Choose Origin</option>
       <option value="Mumbai">Mumbai</option>
@@ -26,7 +34,9 @@
       <option value="Chennai">Chennai</option>
     </select>
 
-    <label for="destination">Destination</label>
+    <label for="destination" style="font-size: 18px; 
+    font-family: Georgia, 'Times New Roman', Times, serif; 
+    font-weight: bolder; color: black;">Destination :</label>
     <select id="destination" name="destination">
       <option value="Choose">Choose Destination</option>
       <option value="Mumbai">Mumbai</option>
@@ -40,18 +50,25 @@
       <option value="Delhi">Delhi</option>
       <option value="Chennai">Chennai</option>
     </select>
-  
-
-  <label for="Departdate">Enter Depart Date and Time</label>
-  <input type="date" id="Departdate" name="Departdate" min="2000-01-02">
-  <input type="time" id="departTime" name="departTime">
-
   <br>
-  <label for="Returndate">Enter Return Date and Time</label>
-  <input type="date" id="Returndate" name="Returndate" max="1979-12-31">
-  <input type="time" id="ReturnTime" name="ReturnTime">
+  <br>
+
+  <label for="Departdate" style="font-size: 18px; 
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+  font-weight: bolder; color: black;">Enter Depart Date and Time :</label>
+  <input type="date" id="Departdate" name="Departdate" min="2000-01-02" style="margin-left: 40px; font-size: 20px; border: 4cm;">
+  <input type="time" id="departTime" name="departTime" style="margin-left: 40px; font-size: 20px; border: 4cm;">
+<br>
+  <br>
+  <label for="Returndate" style="font-size: 18px; 
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+  font-weight: bolder; color: black;">Enter Return Date and Time :</label>
+  <input type="date" id="Returndate" name="Returndate" max="1979-12-31" style="border: 2cm; font-size: 20px; margin-left: 35px;">
+  <input type="time" id="ReturnTime" name="ReturnTime" style="margin-left: 40px; font-size: 20px; border: 4cm;">
   
   <br><br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="SUBMIT">
   </form>
+
 </div>
+
