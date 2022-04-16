@@ -3,8 +3,6 @@ import { Injectable } from '@angular/core';
 import { of, Subject } from 'rxjs';
 import { API_PATH } from 'src/app/constants/IMPData';
 
-import { ToastrService } from 'ngx-toastr';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +11,7 @@ export class UserService {
 
   subject = new Subject<any>();
 
-  constructor(private http: HttpClient, private toastr: ToastrService) {
+  constructor(private http: HttpClient) {
     this.user = [];
     this.subject.subscribe({
       next: (v) => console.log(`observerA: ${v}`),
