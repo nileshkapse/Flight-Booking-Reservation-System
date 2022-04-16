@@ -1,0 +1,168 @@
+<div class="container">
+  <h3>Account Settings</h3>
+
+  <div class="card mt-4" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Update Account Details</h4>
+      <form (submit)="handleUpdateAccoutDetails($event)" ngNativeValidate>
+        <div class="mb-3 mt-4">
+          <label for="username" class="form-label">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            name="username"
+            placeholder="Username"
+            [(ngModel)]="username"
+            required
+          />
+        </div>
+
+        <div class="mb-3 mt-4">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            name="name"
+            placeholder="Name"
+            [(ngModel)]="name"
+            required
+          />
+        </div>
+
+        <div class="mb-3 mt-4">
+          <label for="date-of-birth" class="form-label">Date of Birth</label>
+          <input
+            type="date"
+            class="form-control"
+            id="date-of-birth"
+            name="date-of-birth"
+            placeholder="date-of-birth"
+            [(ngModel)]="dateOfBirth"
+            required
+          />
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-primary">Update Details</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Change Password -->
+  <div class="card mt-4" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Change Password</h4>
+      <form (submit)="handleChangePassword($event)" ngNativeValidate>
+        <div class="mb-3 mt-4">
+          <label for="old-password" class="form-label">Old Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="old-password"
+            name="old-password"
+            placeholder="Old Password"
+            [(ngModel)]="oldPassword"
+            required
+          />
+        </div>
+
+        <div class="mb-3 mt-4">
+          <label for="new-password" class="form-label">New Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="new-password"
+            name="new-password"
+            placeholder="New Password"
+            [(ngModel)]="password"
+            required
+          />
+        </div>
+
+        <div class="mb-3 mt-4">
+          <label for="new-confirm-password" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="new-confirm-password"
+            name="new-confirm-password"
+            placeholder="Confirm Password"
+            [(ngModel)]="confirmPassword"
+            required
+          />
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-primary">Change Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Account -->
+  <div class="card mt-4" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Delete Account</h4>
+
+      <form (submit)="handleDeleteAccount($event)" ngNativeValidate>
+        <div class="mb-3 mt-4">
+          <label for="delete-account-password" class="form-label"
+            >Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="delete-account-password"
+            name="delete-account-password"
+            placeholder="Password"
+            required
+            [(ngModel)]="deleteAccountPassword"
+          />
+        </div>
+
+        <div class="form-check mt-3 mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="delete-account-confirmation-check"
+            name="delete-account-confirmation-check"
+            [(ngModel)]="isSureToDelete"
+            required
+          />
+          <label
+            class="form-check-label"
+            for="delete-account-confirmation-check"
+          >
+            Sure to Delete Account
+          </label>
+        </div>
+
+        <div class="form-check mt-3 mb-3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="agree-to-delete"
+            name="agree-to-delete"
+            [(ngModel)]="isAgreeToDataLoss"
+            required
+          />
+          <label class="form-check-label" for="agree-to-delete">
+            Agree that once the account is deleted all the flight booking data
+            will lost
+          </label>
+        </div>
+
+        <div class="d-grid mt-3">
+          <button type="submit" class="btn btn-danger w-100">
+            Delete Account
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
