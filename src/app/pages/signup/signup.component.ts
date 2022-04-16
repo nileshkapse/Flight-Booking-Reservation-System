@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SignupComponent implements OnInit {
   repeatPassword: string;
   rememberMe: boolean;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private toastr: ToastrService) {
     this.name = '';
     this.email = '';
     this.phoneNo = '';
@@ -29,6 +30,7 @@ export class SignupComponent implements OnInit {
     event.preventDefault();
 
     if (this.password !== this.repeatPassword) {
+      this.toastr.error('Error', 'Password not matched');
       return console.log('Password not matched');
     }
 
@@ -43,14 +45,29 @@ export class SignupComponent implements OnInit {
       rememberMe: this.rememberMe,
     };
 
-    this.userService.signupUser(newData);
+    this.userService.signupUser(newData).subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.isDone) {
+          console.log('Account Created Successfully');
 
-    console.log('User Signup Data: ', newData);
+          this.name = '';
+          this.email = '';
+          this.phoneNo = '';
+          this.password = '';
+          this.repeatPassword = '';
+          this.rememberMe = false;
 
-    this.email = '';
-    this.phoneNo = '';
-    this.password = '';
-    this.repeatPassword = '';
-    this.rememberMe = false;
+          this.toastr.success('Account Created Successfully', 'Please Login');
+        } else {
+          console.log('Error', result.err.writeErrors[0].errmsg);
+          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+        this.toastr.error('Error', error.error.msg);
+      }
+    );
   }
 }

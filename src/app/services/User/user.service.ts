@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, Subject } from 'rxjs';
 import { API_PATH } from 'src/app/constants/IMPData';
-import { User } from 'src/app/models/Models';
+
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class UserService {
 
   subject = new Subject<any>();
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toastr: ToastrService) {
     this.user = [];
     this.subject.subscribe({
       next: (v) => console.log(`observerA: ${v}`),
@@ -26,26 +27,12 @@ export class UserService {
   signupUser(user: any) {
     console.log('USER SERVICE: Signup User: ', user);
 
-    this.http
-      .post(`${API_PATH}/auth/signup`, {
-        username: user.username,
-        password: user.password,
-        email: user.email,
-        name: user.name,
-      })
-      .subscribe(
-        (result: any) => {
-          console.log(result);
-          if (result.isDone) {
-            console.log('Account Created Successfully');
-          } else {
-            console.log(result.err.writeErrors[0].errmsg);
-          }
-        },
-        (error) => {
-          console.log('Error Occured: ', error.error.msg);
-        }
-      );
+    return this.http.post(`${API_PATH}/auth/signup`, {
+      username: user.username,
+      password: user.password,
+      email: user.email,
+      name: user.name,
+    });
   }
 
   loginUser(user: any) {
