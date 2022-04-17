@@ -11,6 +11,7 @@ import { FlightBookingComponent } from './pages/flight-booking/flight-booking.co
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { FlightsComponent } from './pages/flights/flights.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
+import { AddFlightComponent } from './pages/add-flight/add-flight.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'flight-details', component: FlightDetailsComponent },
   { path: 'flight-booking', component: FlightBookingComponent },
   { path: 'flight-history', component: FlightHistoryComponent },
+  { path: 'add-flight', component: AddFlightComponent },
   { path: 'invoice', component: InvoiceComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
   { path: '**', component: HomeComponent },

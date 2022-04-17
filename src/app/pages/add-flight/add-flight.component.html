@@ -1,0 +1,139 @@
+<div class="All" style="background-image: url(assets/Images/cloud.jpg)">
+  <p
+    style="
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 22px;
+      color: black;
+    "
+  >
+    ENTER FLIGHT DETAILS
+  </p>
+
+  <form action="/action_page.php">
+    <div>
+      <label
+        for="Fclass"
+        style="font-size: 18px; font-weight: bold; color: black"
+        >Seat Class :</label
+      >
+      <input
+        type="text"
+        id="Fclass"
+        name="flightClass"
+        placeholder="Enter Seat Class..."
+      />
+    </div>
+    <div>
+      <label
+        for="Fcapacity"
+        style="font-size: 18px; font-weight: bold; color: black"
+        >Class Capacity :</label
+      >
+      <input
+        type="text"
+        id="Fcapacity"
+        name="flightClass"
+        placeholder="Enter Class Capacity..."
+      />
+    </div>
+
+    <div>
+      <label
+        for="origin"
+        style="font-size: 18px; font-weight: bold; color: black"
+        >Origin :</label
+      >
+      <select id="origin" name="origin">
+        <option value="Choose">Choose Origin</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Pune">Pune</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Patna">Patna</option>
+        <option value="Nagpur">Nagpur</option>
+        <option value="Amritsar">Amritsar</option>
+        <option value="Jaipur">Jaipur</option>
+        <option value="Kota">Kota</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Chennai">Chennai</option>
+      </select>
+    </div>
+    <div>
+      <label
+        for="destination"
+        style="font-size: 18px; font-weight: bold; color: black"
+        >Destination :</label
+      >
+      <select id="destination" name="destination">
+        <option value="Choose">Choose Destination</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Pune">Pune</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Patna">Patna</option>
+        <option value="Nagpur">Nagpur</option>
+        <option value="Amritsar">Amritsar</option>
+        <option value="Jaipur">Jaipur</option>
+        <option value="Kota">Kota</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Chennai">Chennai</option>
+      </select>
+    </div>
+
+    <div style="margin-top: 10px">
+      <label
+        for="Departdate"
+        style="font-size: 18px; font-weight: bold; color: black"
+        >Enter Depart Date and Time :</label
+      >
+      <br />
+      <div style="display: flex">
+        <input
+          type="date"
+          id="Departdate"
+          name="Departdate"
+          min="2000-01-02"
+          style="font-size: 20px; border: 4cm; flex: 1; padding: 12px 20px"
+        />
+
+        <input
+          type="time"
+          id="departTime"
+          name="departTime"
+          style="
+            font-size: 20px;
+            border: 4cm;
+            margin-left: 10px;
+            padding: 12px 20px;
+          "
+        />
+      </div>
+    </div>
+
+    <div style="margin-top: 10px">
+      <label
+        for="Returndate"
+        style="font-size: 18px; font-weight: bold; color: black"
+        >Enter Return Date and Time :</label
+      >
+      <div style="display: flex">
+        <input
+          type="date"
+          id="Returndate"
+          name="Returndate"
+          max="1979-12-31"
+          style="border: 2cm; font-size: 20px; flex: 1"
+        />
+        <input
+          type="time"
+          id="ReturnTime"
+          name="ReturnTime"
+          style="margin-left: 10px; font-size: 20px; border: 4cm"
+        />
+      </div>
+    </div>
+
+    <br /><br />
+    <input type="submit" value="SUBMIT" />
+  </form>
+</div>
