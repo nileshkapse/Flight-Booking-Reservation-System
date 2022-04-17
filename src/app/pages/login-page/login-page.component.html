@@ -1,21 +1,26 @@
-<h1 style="margin-left: 600px; margin-top: 100px; font-weight: bold">
-  Login Form
-</h1>
+<div class="All" style="background-image: url(assets/Images/login11.jpg);">
+<p style="margin-left: 300px; margin-top: 25px; font-weight: bold;font-size: 28px; 
+font-family: Georgia, 'Times New Roman', Times, serif; 
+font-weight: bolder;padding-left: 200px; color: white"  >
+  *LOGIN*
+<p>
 
-<form action="/action_page.php" method="post">
-  <div class="imgcontainer">
+<form action="/action_page.php" method="post" style="margin-top: 10px; 
+margin-left: 200px; margin-right: 200px; border-width: 0ch;">
+ 
     <img
-      src="assets/Images/login_icon.png"
+      src="assets/Images/login_logo.png"
       alt="Avatar"
       class="avatar"
-      style="height: 160px; width: 160px"
+      style="height: 90px; width: 100px; margin-left: 300px;"
     />
-  </div>
+  
 
-  <div class="container">
-    <form (submit)="handleFormSubmit($event)" ngNativeValidate>
+  <div class="container" >
+    <form (submit)="handleFormSubmit($event)" ngNativeValidate style="border-width:0ch;">
       <div>
-        <label for="uname" style="margin-left: 300px"><b>Username</b></label>
+        <label for="uname" style="margin-left: 100px;  font-family: Georgia, 'Times New Roman', Times, serif; 
+        font-weight: bolder; color: white"><b> USERNAME :</b></label>
         <input
           type="text"
           placeholder="Enter Username"
@@ -27,7 +32,8 @@
 
       <br />
       <div>
-        <label for="psw1" style="margin-left: 300px"><b>Password</b></label>
+        <label for="psw1" style="margin-left: 100px;font-family: Georgia, 'Times New Roman', Times, serif; 
+        font-weight: bolder; color: white"><b>PASSWORD :</b></label>
         <input
           type="password"
           placeholder="Enter Password"
@@ -37,23 +43,27 @@
         />
       </div>
       <br />
-      <br />
+
       <div>
-        <label style="margin-left: 300px; margin-top: 20px">
+        <label style="margin-left: 60px; margin-top: 10px;font-family: Georgia, 'Times New Roman', Times, serif; 
+        font-weight: bolder; color: white">
           <input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
           Remember me
         </label>
       </div>
-      <br />
+      
 
-      <button type="submit">Login</button>
+      <button type="submit" style="margin-left: 170px; margin-bottom: 55px; font-family: Georgia, 'Times New Roman', Times, serif; 
+      font-weight: bolder; border-radius: 12px; background-color:wheat;color: black; ">LOGIN</button>
 
       <button
         type="reset"
-        style="background-color: darkred; margin-left: 150px"
+        style="background-color: crimson; margin-left: 130px;margin-bottom: 55px; font-family: Georgia, 'Times New Roman', Times, serif; 
+        font-weight: bolder;border-radius: 12px; "
       >
-        Cancel
+        CANCEL
       </button>
     </form>
   </div>
 </form>
+</div>
