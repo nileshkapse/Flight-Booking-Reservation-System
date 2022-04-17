@@ -16,6 +16,7 @@ input[type="time"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: rgb(240, 240, 240);
 }
 
 .All {
@@ -41,5 +42,4 @@ input[type="submit"]:hover {
 
 div {
   border-radius: 5px;
-  background-color: #f2f2f2;
 }
