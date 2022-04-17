@@ -40,6 +40,11 @@ export class AddFlightComponent implements OnInit {
   handleFormSubmit(event: Event) {
     event.preventDefault();
 
+    if (this.origin === this.destination) {
+      this.toastr.error('Error', 'Origin and destination cannot be same');
+      return console.log('Origin and destination cannot be same');
+    }
+
     var newFlightObject: any = {
       name: this.flightName,
       routeSource: this.origin,
@@ -62,8 +67,13 @@ export class AddFlightComponent implements OnInit {
         this.toastr.warning('Error', 'Please enter economy class details');
         return console.log('Please enter economy class details');
       }
-      newFlightObject['economyClassSeats'] = parseInt(this.economyClassSeats);
-      newFlightObject['economyClassTicketPrice'] = parseInt(
+      newFlightObject['economyClassTotalSeats'] = parseInt(
+        this.economyClassSeats
+      );
+      newFlightObject['economyClassRemainingSeats'] = parseInt(
+        this.economyClassSeats
+      );
+      newFlightObject['economyClassTicketCost'] = parseInt(
         this.economyClassTicketPrice
       );
     }
@@ -77,8 +87,13 @@ export class AddFlightComponent implements OnInit {
         return console.log('Please enter business class details');
       }
 
-      newFlightObject['businessClassSeats'] = parseInt(this.businessClassSeats);
-      newFlightObject['businessClassTicketPrice'] = parseInt(
+      newFlightObject['businessClassTotalSeats'] = parseInt(
+        this.businessClassSeats
+      );
+      newFlightObject['businessClassRemainingSeats'] = parseInt(
+        this.businessClassSeats
+      );
+      newFlightObject['businessClassTicketCost'] = parseInt(
         this.businessClassTicketPrice
       );
     }
@@ -88,8 +103,11 @@ export class AddFlightComponent implements OnInit {
         this.toastr.warning('Error', 'Please enter first class details');
         return console.log('Please enter first class details');
       }
-      newFlightObject['firstClassSeats'] = parseInt(this.firstClassSeats);
-      newFlightObject['firstClassTicketPrice'] = parseInt(
+      newFlightObject['firstClassTotalSeats'] = parseInt(this.firstClassSeats);
+      newFlightObject['firstClassRemainingSeats'] = parseInt(
+        this.firstClassSeats
+      );
+      newFlightObject['firstClassTicketCost'] = parseInt(
         this.firstClassTicketPrice
       );
     }
