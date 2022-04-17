@@ -1,11 +1,13 @@
 <div class="container">
-  <h3 class="mb-4">Flights</h3>
-  <div class="row g-4">
-    <div class="col-12 col-sm-6 col-md-4" *ngFor="let flight of flightDetails">
+  <div *ngIf="flights.length === 0">
+    <h3>No Flights Found</h3>
+  </div>
+  <div *ngIf="flights.length > 0" class="row g-4">
+    <div class="col-12 col-sm-6 col-md-4" *ngFor="let flight of flights">
       <div class="card m-3" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
-        <img class="card-img-top" [src]="flight.imgSrc" alt="Card image cap" />
+        <!-- <img class="card-img-top" [src]="flight.imgSrc" alt="Card image cap" /> -->
         <div class="card-body">
-          <h4 class="card-title font-weight-bold">{{ flight.flightName }}</h4>
+          <h4 class="card-title font-weight-bold">{{ flight.name }}</h4>
           <div class="card-text">
             <h6
               style="
@@ -39,10 +41,21 @@
                 border-radius: 5px;
               "
             >
-              Date:
-              <span style="font-weight: 400">{{ flight.flightDate }}</span>
+              Departure Date:
+              <span style="font-weight: 400">{{ flight.departureDate }}</span>
             </h6>
             <h6
+              style="
+                padding: 15px 10px;
+                box-shadow: '0px 0px 7px #ccc';
+                margin-top: 15px;
+                border-radius: 5px;
+              "
+            >
+              Departure Time:
+              <span style="font-weight: 400">{{ flight.departureTime }}</span>
+            </h6>
+            <!-- <h6
               style="
                 padding: 15px 10px;
                 box-shadow: '0px 0px 7px #ccc';
@@ -75,10 +88,11 @@
               Ticket Cost:
               <span style="font-weight: 400">{{ flight.ticketCost }}</span>
             </h6>
-          </div>
+          </div> -->
 
-          <div class="d-grid mt-3">
-            <button class="btn btn-primary">Details</button>
+            <div class="d-grid mt-3">
+              <button class="btn btn-primary">Details</button>
+            </div>
           </div>
         </div>
       </div>

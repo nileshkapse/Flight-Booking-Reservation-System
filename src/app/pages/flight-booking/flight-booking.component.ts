@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FlightService } from 'src/app/services/Flight/flight.service';
 
 @Component({
   selector: 'app-flight-booking',
@@ -7,13 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./flight-booking.component.css'],
 })
 export class FlightBookingComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private flightService: FlightService) {}
 
   ngOnInit(): void {}
 
   handleFormSubmit(event: Event) {
     event.preventDefault();
 
-    this.router.navigate(['/flights']);
+    this.flightService.getFlights('Pune', 'Mumbai').subscribe(
+      (result: any) => {
+        console.log('Fetched: ', result.data);
+        this.flightService.flights.push(...result.data);
+        this.router.navigate(['/flights']);
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+      }
+    );
   }
 }
