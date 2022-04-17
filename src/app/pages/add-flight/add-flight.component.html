@@ -11,7 +11,7 @@
     ENTER FLIGHT DETAILS
   </p>
 
-  <form (submit)="handleFormSubmit($event)">
+  <form (submit)="handleFormSubmit($event)" ngNativeValidate>
     <div class="row">
       <div
         class="card mt-4"
@@ -33,7 +33,7 @@
               type="text"
               id="Fclass"
               name="flightClass"
-              placeholder="Enter Flight name"
+              placeholder="Enter Flight Name"
               [(ngModel)]="flightName"
               required
             />
@@ -152,7 +152,7 @@
                 type="date"
                 id="Returndate"
                 name="Returndate"
-                max="1979-12-31"
+                min="2000-01-02"
                 style="border: 2cm; font-size: 20px; flex: 1"
                 [(ngModel)]="returnDate"
                 required
