@@ -19,6 +19,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { FlightsComponent } from './pages/flights/flights.component';
+import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
     FooterComponent,
     FlightBookingComponent,
     InvoiceComponent,
+    FlightsComponent,
+    FlightDetailsComponent,
   ],
   imports: [
     BrowserModule,

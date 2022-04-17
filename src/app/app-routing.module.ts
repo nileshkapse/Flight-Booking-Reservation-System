@@ -9,12 +9,16 @@ import { FlightHistoryComponent } from './pages/flight-history/flight-history.co
 import { AccountSettingsComponent } from './pages/account-settings/account-settings.component';
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { FlightsComponent } from './pages/flights/flights.component';
+import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login-page', component: LoginPageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'report', component: ReportComponent },
+  { path: 'flights', component: FlightsComponent },
+  { path: 'flight-details', component: FlightDetailsComponent },
   { path: 'flight-booking', component: FlightBookingComponent },
   { path: 'flight-history', component: FlightHistoryComponent },
   { path: 'invoice', component: InvoiceComponent },
