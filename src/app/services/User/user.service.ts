@@ -9,13 +9,19 @@ import { API_PATH } from 'src/app/constants/IMPData';
 export class UserService {
   user: any[];
 
-  subject = new Subject<any>();
-
   constructor(private http: HttpClient) {
     this.user = [];
-    this.subject.subscribe({
-      next: (v) => console.log(`observerA: ${v}`),
-    });
+
+    if (localStorage.getItem('token') !== null) {
+      const userData = {
+        email: localStorage.getItem('email'),
+        id: localStorage.getItem('id'),
+        role: localStorage.getItem('role'),
+        username: localStorage.getItem('username'),
+        name: localStorage.getItem('name'),
+      };
+      this.user.push(userData);
+    }
   }
 
   getCurrentUser() {
