@@ -11,7 +11,7 @@
     ENTER FLIGHT DETAILS
   </p>
 
-  <form action="/action_page.php">
+  <form (submit)="handleFormSubmit($event)">
     <div class="row">
       <div
         class="card mt-4"
@@ -33,7 +33,9 @@
               type="text"
               id="Fclass"
               name="flightClass"
-              placeholder="Enter Seat Class..."
+              placeholder="Enter Flight name"
+              [(ngModel)]="flightName"
+              required
             />
           </div>
 
@@ -43,7 +45,7 @@
               style="font-size: 18px; font-weight: bold; color: black"
               >Origin
             </label>
-            <select id="origin" name="origin">
+            <select id="origin" name="origin" [(ngModel)]="origin" required>
               <option value="Choose">Choose Origin</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Pune">Pune</option>
@@ -64,7 +66,12 @@
               style="font-size: 18px; font-weight: bold; color: black"
               >Destination
             </label>
-            <select id="destination" name="destination">
+            <select
+              id="destination"
+              name="destination"
+              [(ngModel)]="destination"
+              required
+            >
               <option value="Choose">Choose Destination</option>
               <option value="Mumbai">Mumbai</option>
               <option value="Pune">Pune</option>
@@ -89,7 +96,9 @@
               type="text"
               id="Fclass"
               name="flightClass"
-              placeholder="Enter Seat Class..."
+              placeholder="Enter Duration"
+              [(ngModel)]="duration"
+              required
             />
           </div>
 
@@ -112,6 +121,8 @@
                   flex: 1;
                   padding: 12px 20px;
                 "
+                [(ngModel)]="departureDate"
+                required
               />
 
               <input
@@ -124,6 +135,8 @@
                   margin-left: 10px;
                   padding: 12px 20px;
                 "
+                [(ngModel)]="departureTime"
+                required
               />
             </div>
           </div>
@@ -141,12 +154,16 @@
                 name="Returndate"
                 max="1979-12-31"
                 style="border: 2cm; font-size: 20px; flex: 1"
+                [(ngModel)]="returnDate"
+                required
               />
               <input
                 type="time"
                 id="ReturnTime"
                 name="ReturnTime"
                 style="margin-left: 10px; font-size: 20px; border: 4cm"
+                [(ngModel)]="returnTime"
+                required
               />
             </div>
           </div>
@@ -164,9 +181,9 @@
                 type="checkbox"
                 id="economy-flight-classes"
                 name="economy-flight-classes"
-                required
+                [(ngModel)]="isEconomyClass"
               />
-              <label class="form-check-label" for="flight-classes">
+              <label class="form-check-label" for="economy-flight-classes ">
                 Economy Class
               </label>
             </div>
@@ -176,9 +193,9 @@
                 type="checkbox"
                 id="business-flight-classes"
                 name="business-flight-classes"
-                required
+                [(ngModel)]="isBusinessClass"
               />
-              <label class="form-check-label" for="flight-classes">
+              <label class="form-check-label" for="business-flight-classes">
                 Business Class
               </label>
             </div>
@@ -188,9 +205,9 @@
                 type="checkbox"
                 id="first-flight-classes"
                 name="first-flight-classes"
-                required
+                [(ngModel)]="isFirstClass"
               />
-              <label class="form-check-label" for="flight-classes">
+              <label class="form-check-label" for="first-flight-classes">
                 First Class
               </label>
             </div>
@@ -200,6 +217,7 @@
 
       <!-- Economy Class -->
       <div
+        *ngIf="isEconomyClass"
         class="card mt-5"
         style="
           width: 100%;
@@ -220,6 +238,7 @@
               id="Fclass"
               name="totalSeats"
               placeholder="Enter Total Seats"
+              [(ngModel)]="economyClassSeats"
             />
           </div>
 
@@ -235,6 +254,7 @@
               id="Fcapacity"
               name="ticketPrice"
               placeholder="Enter Ticket Price"
+              [(ngModel)]="economyClassTicketPrice"
             />
           </div>
         </div>
@@ -242,6 +262,7 @@
 
       <!-- Business Class -->
       <div
+        *ngIf="isBusinessClass"
         class="card mt-5"
         style="
           width: 100%;
@@ -262,6 +283,7 @@
               id="Fclass"
               name="totalSeats"
               placeholder="Enter Total Seats"
+              [(ngModel)]="businessClassSeats"
             />
           </div>
 
@@ -277,6 +299,7 @@
               id="Fcapacity"
               name="ticketPrice"
               placeholder="Enter Ticket Price"
+              [(ngModel)]="businessClassTicketPrice"
             />
           </div>
         </div>
@@ -284,6 +307,7 @@
 
       <!-- First Class -->
       <div
+        *ngIf="isFirstClass"
         class="card mt-5"
         style="
           width: 100%;
@@ -304,6 +328,7 @@
               id="Fclass"
               name="totalSeats"
               placeholder="Enter Total Seats"
+              [(ngModel)]="firstClassSeats"
             />
           </div>
 
@@ -319,6 +344,7 @@
               id="Fcapacity"
               name="ticketPrice"
               placeholder="Enter Ticket Price"
+              [(ngModel)]="firstClassTicketPrice"
             />
           </div>
         </div>
