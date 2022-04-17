@@ -56,12 +56,13 @@ export class LoginPageComponent implements OnInit {
           role: result.role,
           username: result.username,
           name: result.name,
-          token: result.token,
           rememberMe: this.rememberMe,
         };
 
         this.toastr.success('Authorized User', 'Account LoggedIn Successfully');
 
+        // Saving data to localstorage
+        localStorage.setItem('token', result.token);
         this.userService.user.push(newUser);
 
         console.log('Login Data: ', newData);
