@@ -47,4 +47,8 @@ export class UserService {
       password: user.password,
     });
   }
+
+  logoutUser() {
+    return this.user.splice(0, 1);
+  }
 }

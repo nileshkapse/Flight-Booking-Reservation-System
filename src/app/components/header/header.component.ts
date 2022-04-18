@@ -23,4 +23,9 @@ export class HeaderComponent implements OnInit {
   displayUser() {
     console.log('user : ', this.user);
   }
+
+  handleLogout() {
+    localStorage.clear();
+    this.userService.logoutUser();
+  }
 }
