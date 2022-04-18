@@ -5,15 +5,19 @@
         <div class="booking-form">
           <form (submit)="handleFormSubmit($event)" ngNativeValidate>
             <div class="form-group">
-              <div class="form-checkbox">
-                <label for="roundtrip">
-                  <input type="radio" id="roundtrip" name="flight-type" />
-                  <span></span>Round
-                </label>
-                <label for="one-way">
-                  <input type="radio" id="one-way" name="flight-type" />
-                  <span></span>One way
-                </label>
+              <div class="form-group">
+                <span class="form-label">Trip Type</span>
+                <select
+                  class="form-control"
+                  [(ngModel)]="tripType"
+                  name="adult-count"
+                  required
+                >
+                  <option selected>Select</option>
+                  <option>Round Trip</option>
+                  <option>One Way Trip</option>
+                </select>
+                <span class="select-arrow"></span>
               </div>
             </div>
             <div class="row">
@@ -23,7 +27,13 @@
                   <!-- <input class="form-control" type="text" placeholder="City or airport"> -->
                   <!--<div id="departsfrom-div" name="departsfrom-div" placeholder="Origin" class="col-xs-12 col-sm-6 col-md-3 widget-div-input scombobox padd-btm-1per marg-0 departsfrom-div"></div>
 										<input class="scombobox-display valid" placeholder="Origin" type="text" spellcheck="false" name="flightSearchFrom" aria-label="Search origin">-->
-                  <select id="from" class="form-control departsfrom-select">
+                  <select
+                    id="from"
+                    name="from"
+                    class="form-control departsfrom-select"
+                    [(ngModel)]="origin"
+                    required
+                  >
                     <option value="ABZ">Aberdeen (ABZ)</option>
                     <option value="ADL">Adelaide (ADL)</option>
                     <option value="AMD">Ahmedabad (AMD)</option>
@@ -108,8 +118,14 @@
 
               <div class="col-md-6">
                 <div class="form-group">
-                  <span class="form-label">Flyning to</span>
-                  <select id="from" class="form-control departsfrom-select">
+                  <span class="form-label">Flying to</span>
+                  <select
+                    id="from"
+                    name="from"
+                    class="form-control departsfrom-select"
+                    [(ngModel)]="destination"
+                    required
+                  >
                     <option value="ABZ">Aberdeen (ABZ)</option>
                     <option value="ADL">Adelaide (ADL)</option>
                     <option value="AMD">Ahmedabad (AMD)</option>
@@ -196,19 +212,37 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <span class="form-label">Departing</span>
-                  <input class="form-control" type="date" required />
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="departureDate"
+                    required
+                    [(ngModel)]="departureDate"
+                  />
                 </div>
               </div>
               <div class="col-md-5">
                 <div class="form-group">
                   <span class="form-label">Returning</span>
-                  <input class="form-control" type="date" required />
+                  <input
+                    class="form-control"
+                    type="date"
+                    required
+                    name="returnDate"
+                    [(ngModel)]="returnDate"
+                  />
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
                   <span class="form-label">Adults (18+)</span>
-                  <select class="form-control">
+                  <select
+                    class="form-control"
+                    [(ngModel)]="adultCount"
+                    name="adult-count"
+                    required
+                  >
+                    <option>0</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -222,7 +256,12 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <span class="form-label">Children (0-17)</span>
-                  <select class="form-control">
+                  <select
+                    class="form-control"
+                    [(ngModel)]="childrenCount"
+                    name="childrenCount"
+                    required
+                  >
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -237,8 +276,14 @@
               <div class="col-md-5">
                 <div class="form-group">
                   <span class="form-label">Travel class</span>
-                  <select class="form-control">
+                  <select
+                    class="form-control"
+                    [(ngModel)]="flightClass"
+                    name="flightClass"
+                    required
+                  >
                     <option selected>Select Class</option>
+                    <option>Any</option>
                     <option>Economy class</option>
                     <option>Business class</option>
                     <option>First class</option>
