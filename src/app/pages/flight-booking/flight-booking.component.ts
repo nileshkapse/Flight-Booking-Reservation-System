@@ -95,8 +95,9 @@ export class FlightBookingComponent implements OnInit {
     this.flightService.getFlights(newFlightBookingFilterObject).subscribe(
       (result: any) => {
         console.log('Fetched: ', result.data);
-        // this.flightService.flights.push(...result.data);
-        // this.router.navigate(['/flights']);
+        this.flightService.flights.splice(0, this.flightService.flights.length);
+        this.flightService.flights.push(...result.data);
+        this.router.navigate(['/flights']);
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
