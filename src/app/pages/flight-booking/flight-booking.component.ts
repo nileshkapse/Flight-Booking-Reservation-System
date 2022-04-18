@@ -31,10 +31,8 @@ export class FlightBookingComponent implements OnInit {
     this.destination = '';
     this.departureDate = '';
     this.returnDate = '';
-
     this.adultCount = 0;
     this.childrenCount = 0;
-
     this.flightClass = '';
   }
 
@@ -63,20 +61,38 @@ export class FlightBookingComponent implements OnInit {
       );
     }
 
-    const newFlightBookingObject = {
+    const newFlightBookingObject: any = {
       tripType: this.tripType,
-      origin: this.origin,
-      destination: this.destination,
+      routeSource: this.origin,
+      routeDestination: this.destination,
       departureDate: this.departureDate,
       returnDate: this.returnDate,
       adultCount: this.adultCount,
       childrenCount: this.childrenCount,
-      flightClass: this.flightClass,
     };
 
-    console.log(newFlightBookingObject);
+    const newFlightBookingFilterObject: any = {
+      routeSource: this.origin,
+      routeDestination: this.destination,
+      departureDate: this.departureDate,
+    };
 
-    this.flightService.getFlights('Pune', 'Mumbai').subscribe(
+    if (this.flightClass === 'Any') {
+      // newFlightBookingFilterObject['isEconomyClass'] = true;
+      // newFlightBookingFilterObject['isBusinessClass'] = true;
+      // newFlightBookingFilterObject['isFirstClass'] = true;
+    } else if (this.flightClass === 'Economy Class') {
+      newFlightBookingFilterObject['isEconomyClass'] = true;
+    } else if (this.flightClass === 'Business Class') {
+      newFlightBookingFilterObject['isBusinessClass'] = true;
+    } else if (this.flightClass === 'First Class') {
+      newFlightBookingFilterObject['isFirstClass'] = true;
+    }
+
+    console.log('Flight Object: ', newFlightBookingObject);
+    console.log('Flight Fitler Object: ', newFlightBookingFilterObject);
+
+    this.flightService.getFlights(newFlightBookingFilterObject).subscribe(
       (result: any) => {
         console.log('Fetched: ', result.data);
         // this.flightService.flights.push(...result.data);

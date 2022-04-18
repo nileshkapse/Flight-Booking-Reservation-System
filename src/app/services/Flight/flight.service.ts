@@ -17,16 +17,13 @@ export class FlightService {
     return of(this.flights);
   }
 
-  getFlights(origin: any, destination: any) {
+  getFlights(filterObject: any) {
     const jwt_token = localStorage.getItem('token');
 
     return this.http.post(
       `${API_PATH}/flight/getflights`,
       {
-        filters: {
-          routeSource: origin,
-          routeDestination: destination,
-        },
+        filters: filterObject,
       },
       {
         headers: {
