@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FlightService } from 'src/app/services/Flight/flight.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
 })
 export class FlightsComponent implements OnInit {
   flights: any[];
-  constructor(private flightService: FlightService) {
+  constructor(private flightService: FlightService, private router: Router) {
     this.flights = [];
   }
 
@@ -20,5 +21,11 @@ export class FlightsComponent implements OnInit {
 
   displayFlight(flight: any) {
     console.log(flight);
+  }
+
+  showDetails(flight: any) {
+    console.log('Show Details: ', flight);
+    this.flightService.setSelectedFlight(flight);
+    this.router.navigate(['/flight-details']);
   }
 }
