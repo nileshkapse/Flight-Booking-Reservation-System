@@ -140,5 +140,23 @@ export class FlightTicketsComponent implements OnInit {
     this.finalBookingObject['totalCost'] = this.finalTotalPrice;
 
     console.log('Final Book Flight: ', this.finalBookingObject);
+
+    this.flightService.bookNewFlight(this.finalBookingObject).subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.isDone) {
+          console.log('Flight Booked Successfully');
+
+          this.toastr.success('Flight Booked Successfully', 'Please Login');
+        } else {
+          console.log('Error', result.err.writeErrors[0].errmsg);
+          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.message);
+        this.toastr.error('Error', error.message);
+      }
+    );
   }
 }

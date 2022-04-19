@@ -57,4 +57,21 @@ export class FlightService {
   getSelectedFlight() {
     return of(this.selectedFlight);
   }
+
+  // Book Flight
+  bookNewFlight(flightData: any) {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/flight/booking/newbooking`,
+      {
+        data: flightData,
+      },
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
+  }
 }
