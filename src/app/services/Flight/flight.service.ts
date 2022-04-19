@@ -53,6 +53,7 @@ export class FlightService {
 
   // Selected Flights
   setSelectedFlight(flightData: any) {
+    this.selectedFlight.splice(0, 1);
     return this.selectedFlight.push(flightData);
   }
 
