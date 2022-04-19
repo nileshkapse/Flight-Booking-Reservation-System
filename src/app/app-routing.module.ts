@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: 'flight-booking', component: FlightBookingComponent },
   { path: 'flight-tickets', component: FlightTicketsComponent },
   { path: 'flight-history', component: FlightHistoryComponent },
+  { path: 'flight-receipt', component: InvoiceComponent },
   { path: 'add-flight', component: AddFlightComponent },
-  { path: 'invoice', component: InvoiceComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
   { path: '**', component: HomeComponent },
 ];

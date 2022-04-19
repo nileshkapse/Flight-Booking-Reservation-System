@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FlightService } from 'src/app/services/Flight/flight.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flight-tickets',
@@ -34,7 +35,8 @@ export class FlightTicketsComponent implements OnInit {
 
   constructor(
     private flightService: FlightService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.selectedFlight = [];
   }
@@ -148,6 +150,7 @@ export class FlightTicketsComponent implements OnInit {
           console.log('Flight Booked Successfully');
 
           this.toastr.success('Flight Booked Successfully', 'Please Login');
+          this.router.navigate(['/flight-receipt']);
         } else {
           console.log('Error', result.err);
           this.toastr.error('Error', result.err);
