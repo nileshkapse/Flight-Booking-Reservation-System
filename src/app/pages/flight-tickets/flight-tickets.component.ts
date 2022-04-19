@@ -14,6 +14,8 @@ export class FlightTicketsComponent implements OnInit {
   displayFirstClass = false;
   displayFinalCosting = false;
 
+  finalBookingObject: any = {};
+
   isEconomyClass = false;
   isBusinessClass = false;
   isFirstClass = false;
@@ -66,16 +68,27 @@ export class FlightTicketsComponent implements OnInit {
     }
     this.finalTotalTickets = 0;
     this.finalTotalPrice = 0;
+    this.finalBookingObject = {};
 
     if (this.isEconomyClass) {
       if (this.economyClassTickets === '') {
         this.toastr.warning('Please enter economy class details');
         return console.log('Please enter economy class details');
       }
+      this.finalBookingObject['isEconomyClass'] = true;
+      this.finalBookingObject['economyClassTickets'] = parseInt(
+        this.economyClassTickets
+      );
+      this.finalBookingObject['economyClassTicketCost'] =
+        parseInt(this.economyClassTickets) *
+        parseInt(this.economyClassTicketPrice);
+
       this.finalTotalTickets += parseInt(this.economyClassTickets);
       this.finalTotalPrice +=
         parseInt(this.economyClassTickets) *
         parseInt(this.economyClassTicketPrice);
+    } else {
+      this.finalBookingObject['isEconomyClass'] = false;
     }
 
     if (this.isBusinessClass) {
@@ -83,8 +96,18 @@ export class FlightTicketsComponent implements OnInit {
         this.toastr.warning('Please enter business class details');
         return console.log('Please enter business class details');
       }
+      this.finalBookingObject['isBusinessClass'] = true;
+      this.finalBookingObject['businessClassTickets'] = parseInt(
+        this.businessClassTickets
+      );
+      this.finalBookingObject['businessClassTicketCost'] =
+        parseInt(this.businessClassTickets) *
+        parseInt(this.businessClassTicketPrice);
+
       this.finalTotalTickets += parseInt(this.businessClassTickets);
       this.finalTotalPrice += parseInt(this.businessClassTicketPrice);
+    } else {
+      this.finalBookingObject['isBusinessClass'] = false;
     }
 
     if (this.isFirstClass) {
@@ -92,14 +115,27 @@ export class FlightTicketsComponent implements OnInit {
         this.toastr.warning('Please enter first class details');
         return console.log('Please enter first class details');
       }
+
+      this.finalBookingObject['isFirstClass'] = true;
+      this.finalBookingObject['firstClassTickets'] = parseInt(
+        this.firstClassTickets
+      );
+      this.finalBookingObject['firstClassTicketCost'] =
+        parseInt(this.firstClassTickets) * parseInt(this.firstClassTicketPrice);
+
       this.finalTotalTickets += parseInt(this.firstClassTickets);
       this.finalTotalPrice += parseInt(this.firstClassTicketPrice);
+    } else {
+      this.finalBookingObject['isFirstClass'] = false;
     }
 
     this.displayFinalCosting = true;
   }
 
   bookFlight() {
-    console.log('Final Book Flight');
+    this.finalBookingObject['flightId'] = this.selectedFlight[0]._id;
+    this.finalBookingObject['totalCost'] = this.finalTotalPrice;
+
+    console.log('Final Book Flight: ', this.finalBookingObject);
   }
 }
