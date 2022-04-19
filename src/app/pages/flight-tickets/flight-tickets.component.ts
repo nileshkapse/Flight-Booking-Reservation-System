@@ -105,7 +105,9 @@ export class FlightTicketsComponent implements OnInit {
         parseInt(this.businessClassTicketPrice);
 
       this.finalTotalTickets += parseInt(this.businessClassTickets);
-      this.finalTotalPrice += parseInt(this.businessClassTicketPrice);
+      this.finalTotalPrice +=
+        parseInt(this.businessClassTicketPrice) *
+        parseInt(this.businessClassTickets);
     } else {
       this.finalBookingObject['isBusinessClass'] = false;
     }
@@ -124,7 +126,8 @@ export class FlightTicketsComponent implements OnInit {
         parseInt(this.firstClassTickets) * parseInt(this.firstClassTicketPrice);
 
       this.finalTotalTickets += parseInt(this.firstClassTickets);
-      this.finalTotalPrice += parseInt(this.firstClassTicketPrice);
+      this.finalTotalPrice +=
+        parseInt(this.firstClassTicketPrice) * parseInt(this.firstClassTickets);
     } else {
       this.finalBookingObject['isFirstClass'] = false;
     }
