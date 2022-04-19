@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FlightService } from 'src/app/services/Flight/flight.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class FlightDetailsComponent implements OnInit {
   totalSeats = 0;
   remainingSeats = 0;
 
-  constructor(private flightService: FlightService) {
+  constructor(private flightService: FlightService, private router: Router) {
     this.selectedFlight = [];
   }
 
@@ -51,5 +52,9 @@ export class FlightDetailsComponent implements OnInit {
     }
 
     return this.remainingSeats;
+  }
+
+  handleBookFlight() {
+    this.router.navigate(['/flight-tickets']);
   }
 }

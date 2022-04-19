@@ -22,6 +22,7 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { FlightsComponent } from './pages/flights/flights.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 import { AddFlightComponent } from './pages/add-flight/add-flight.component';
+import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AddFlightComponent } from './pages/add-flight/add-flight.component';
     FlightsComponent,
     FlightDetailsComponent,
     AddFlightComponent,
+    FlightTicketsComponent,
   ],
   imports: [
     BrowserModule,

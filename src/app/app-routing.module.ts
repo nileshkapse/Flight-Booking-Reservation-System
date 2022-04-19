@@ -12,6 +12,7 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { FlightsComponent } from './pages/flights/flights.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 import { AddFlightComponent } from './pages/add-flight/add-flight.component';
+import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'flights', component: FlightsComponent },
   { path: 'flight-details', component: FlightDetailsComponent },
   { path: 'flight-booking', component: FlightBookingComponent },
+  { path: 'flight-tickets', component: FlightTicketsComponent },
   { path: 'flight-history', component: FlightHistoryComponent },
   { path: 'add-flight', component: AddFlightComponent },
   { path: 'invoice', component: InvoiceComponent },
