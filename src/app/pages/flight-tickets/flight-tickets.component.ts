@@ -151,6 +151,8 @@ export class FlightTicketsComponent implements OnInit {
 
           this.toastr.success('Flight Booked Successfully', 'Please Login');
           this.router.navigate(['/flight-receipt']);
+          this.flightService.bookedFlight.splice(0, 1);
+          this.flightService.bookedFlight.push([...result.data]);
         } else {
           console.log('Error', result.err);
           this.toastr.error('Error', result.err);

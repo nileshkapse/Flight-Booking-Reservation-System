@@ -9,10 +9,12 @@ import { API_PATH, TOKEN_PREFIX } from 'src/app/constants/IMPData';
 export class FlightService {
   flights: any[];
   selectedFlight: any[];
+  bookedFlight: any[];
 
   constructor(private http: HttpClient) {
     this.flights = [];
     this.selectedFlight = [];
+    this.bookedFlight = [];
   }
 
   getFetchedFlights() {
@@ -73,5 +75,9 @@ export class FlightService {
         },
       }
     );
+  }
+
+  getBookedFlightData() {
+    return of(this.bookedFlight);
   }
 }
