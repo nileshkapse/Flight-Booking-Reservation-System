@@ -149,8 +149,8 @@ export class FlightTicketsComponent implements OnInit {
 
           this.toastr.success('Flight Booked Successfully', 'Please Login');
         } else {
-          console.log('Error', result.err.writeErrors[0].errmsg);
-          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+          console.log('Error', result.err);
+          this.toastr.error('Error', result.err);
         }
       },
       (error) => {
