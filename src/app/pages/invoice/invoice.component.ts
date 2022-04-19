@@ -10,6 +10,11 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
 export class InvoiceComponent implements OnInit {
   bookingData: any[];
 
+  tickets = [
+    { ticketNo: '128391823', flightClass: 'Economy Class' },
+    { ticketNo: '112391823', flightClass: 'Economy Class' },
+  ];
+
   constructor(
     private toastr: ToastrService,
     private flightService: FlightService
