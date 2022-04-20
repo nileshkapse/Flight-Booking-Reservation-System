@@ -10,6 +10,8 @@ import { AccountSettingsComponent } from './pages/account-settings/account-setti
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { AddFlightComponent } from './pages/add-flight/add-flight.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'invoice', component: InvoiceComponent },
   { path: 'account-settings', component: AccountSettingsComponent },
   { path: 'add-flight', component: AddFlightComponent },
+  { path: 'about-us', component: AboutUsComponent },
+  { path: 'contact-us', component: ContactUsComponent },
   { path: '**', component: HomeComponent },
 ];
 

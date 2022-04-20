@@ -34,7 +34,7 @@
   </div>
 </div>
 
-<nav class="navbar is-info" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: rgb(0, 39, 61);">
   <div class="navbar-brand">
     <a class="navbar-item">
       <img src="{{ imageSrc }}" width="30" height="50" />
@@ -88,8 +88,8 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item"> About </a>
-          <a class="navbar-item"> Contact </a>
+          <a class="navbar-item" routerLink="/about-us"> About </a>
+          <a class="navbar-item" routerLink="/contact-us"> Contact </a>
           <div *ngIf="user.length > 0">
             <hr class="navbar-divider" />
             <a class="navbar-item" routerLink="/report"> Report an issue </a>

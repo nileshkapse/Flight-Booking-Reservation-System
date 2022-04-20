@@ -15,6 +15,8 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { FlightBookingComponent } from './pages/flight-booking/flight-booking.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { AddFlightComponent } from './pages/add-flight/add-flight.component';
+import { AboutUsComponent } from './Components/about-us/about-us.component';
+import { ContactUsComponent } from './Components/contact-us/contact-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,9 @@ import { AddFlightComponent } from './pages/add-flight/add-flight.component';
     FooterComponent,
     FlightBookingComponent,
     InvoiceComponent,
-    AddFlightComponent
+    AddFlightComponent,
+    AboutUsComponent,
+    ContactUsComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
