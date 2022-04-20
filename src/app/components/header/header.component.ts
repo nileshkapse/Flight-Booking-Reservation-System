@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
   imageSrc = 'assets/Images/menu2.png';
   user: any[];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.user = [];
   }
 
@@ -27,5 +28,6 @@ export class HeaderComponent implements OnInit {
   handleLogout() {
     localStorage.clear();
     this.userService.logoutUser();
+    this.router.navigate(['/login-page']);
   }
 }

@@ -83,4 +83,20 @@ export class UserService {
       }
     );
   }
+
+  changeUserPassword(data: any) {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/user/changepassword`,
+      {
+        data: { oldpassword: data.oldPassword, newpassword: data.newPassword },
+      },
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
+  }
 }
