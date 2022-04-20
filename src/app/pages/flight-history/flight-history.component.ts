@@ -41,4 +41,10 @@ export class FlightHistoryComponent implements OnInit {
       }
     );
   }
+
+  viewReceipt(flightItem: any) {
+    this.flightService.bookedFlight.splice(0, 1);
+    this.flightService.bookedFlight.push([flightItem]);
+    this.router.navigate(['/flight-receipt']);
+  }
 }
