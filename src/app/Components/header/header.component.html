@@ -89,7 +89,13 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item" routerLink="/add-flight"> Add Flight </a>
+          <a
+            *ngIf="user[0].role === adminRole"
+            class="navbar-item"
+            routerLink="/add-flight"
+          >
+            Add Flight
+          </a>
           <a class="navbar-item" routerLink="/flight-history">
             Flight History
           </a>
