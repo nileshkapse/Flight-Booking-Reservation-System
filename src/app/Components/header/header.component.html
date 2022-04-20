@@ -39,11 +39,13 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        <h3 style="margin-bottom: 5px; font-family: Georgia" routerLink="/">
-          <b> HOME </b>
-        </h3>
-      </a>
+      <div class="navbar-item">
+        <a>
+          <h3 style="margin-bottom: 5px; font-family: Georgia" routerLink="/">
+            <b> HOME </b>
+          </h3>
+        </a>
+      </div>
 
       <a
         *ngIf="user.length > 0"
@@ -55,28 +57,11 @@
         </h3>
       </a>
 
-      <a class="navbar-item">
+      <!-- <a class="navbar-item">
         <h3 style="margin-bottom: 5px; font-family: Georgia">
           <b> OFFERS </b>
         </h3>
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          <h3 style="margin-bottom: 5px; font-family: Georgia">
-            <b> MORE </b>
-          </h3>
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item"> About </a>
-          <a class="navbar-item"> Contact </a>
-          <div *ngIf="user.length > 0">
-            <hr class="navbar-divider" />
-            <a class="navbar-item" routerLink="/report"> Report an issue </a>
-          </div>
-        </div>
-      </div>
+      </a> -->
 
       <div
         *ngIf="user.length > 0"
@@ -100,10 +85,23 @@
             Flight History
           </a>
 
-          <a class="navbar-item" routerLink="/invoice"> Flight Invoice </a>
-          <a class="navbar-item" routerLink="/account-settings">
-            Account Settings
-          </a>
+          <!-- <a class="navbar-item" routerLink="/invoice"> Flight Invoice </a> -->
+        </div>
+      </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          <h3 style="margin-bottom: 5px; font-family: Georgia">
+            <b> MORE </b>
+          </h3>
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item"> About </a>
+          <a class="navbar-item"> Contact </a>
+          <div *ngIf="user.length > 0">
+            <hr class="navbar-divider" />
+            <a class="navbar-item" routerLink="/report"> Report an issue </a>
+          </div>
         </div>
       </div>
     </div>
@@ -122,10 +120,36 @@
       </div>
 
       <div *ngIf="user.length > 0" class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary" (click)="handleLogout()">
-            <strong>Logout</strong>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span style="margin-right: 20px; font-weight: bold; font-size: 18px"
+              >Welcome, {{ user[0].name }}</span
+            >
+            <img
+              src="../../../assets/img/profilePhoto.jpg"
+              alt="profileImage"
+              style="
+                border-radius: 250px;
+                width: 28px;
+                height: 105px;
+                box-sizing: border-box;
+                transform: scale(1.5);
+              "
+            />
           </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item" routerLink="/account-settings">
+              Account Settings
+            </a>
+            <a
+              class="navbar-item is-primary"
+              style="border-top: 1px solid #ddd"
+              (click)="handleLogout()"
+            >
+              <strong>Logout</strong>
+            </a>
+          </div>
         </div>
       </div>
 
