@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, Subject } from 'rxjs';
-import { API_PATH } from 'src/app/constants/IMPData';
+import { API_PATH, TOKEN_PREFIX } from 'src/app/constants/IMPData';
 
 @Injectable({
   providedIn: 'root',
@@ -34,6 +34,7 @@ export class UserService {
     return this.http.post(`${API_PATH}/auth/signup`, {
       username: user.username,
       password: user.password,
+      phoneNo: user.phoneNo,
       email: user.email,
       name: user.name,
     });
@@ -50,5 +51,36 @@ export class UserService {
 
   logoutUser() {
     return this.user.splice(0, 1);
+  }
+
+  // Account settings
+  getCurrentUserData() {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/user/userdata`,
+      {},
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
+  }
+
+  updateAccountDetails(data: any) {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/user/updatedata`,
+      {
+        data: data,
+      },
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-settings.component.css'],
 })
 export class AccountSettingsComponent implements OnInit {
+  currentUserData: any[];
+
   // Update Account Details Variables
-  username: string;
   name: string;
-  dateOfBirth: string;
+  phoneNo: string;
 
   // Change Password Variables
   oldPassword: string;
@@ -21,10 +24,10 @@ export class AccountSettingsComponent implements OnInit {
   isSureToDelete: boolean;
   isAgreeToDataLoss: boolean;
 
-  constructor() {
-    this.username = '';
+  constructor(private userService: UserService, private toastr: ToastrService) {
+    this.currentUserData = [];
     this.name = '';
-    this.dateOfBirth = '';
+    this.phoneNo = '';
 
     this.oldPassword = '';
     this.password = '';
@@ -35,22 +38,57 @@ export class AccountSettingsComponent implements OnInit {
     this.isAgreeToDataLoss = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getCurrentUserData().subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.isDone) {
+          console.log('Fetched Userdata');
+
+          this.toastr.success('Fetched Userdata');
+          this.currentUserData.splice(0, 1);
+          this.currentUserData.push([...result.data]);
+
+          this.name = result.data[0].name;
+          this.phoneNo = result.data[0].phoneNo;
+        } else {
+          console.log('Error', result.err.writeErrors[0].errmsg);
+          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+        this.toastr.error('Error', error.error.msg);
+      }
+    );
+  }
 
   handleUpdateAccoutDetails(event: Event) {
     event.preventDefault();
 
     const newData = {
-      username: this.username,
       name: this.name,
-      dateOfBirth: this.dateOfBirth,
+      phoneNo: this.phoneNo,
     };
 
-    console.log(newData);
+    this.userService.updateAccountDetails(newData).subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.isDone) {
+          console.log('Data Updated Successfully');
 
-    this.username = '';
-    this.name = '';
-    this.dateOfBirth = '';
+          this.toastr.success('Data Updated Successfully');
+        } else {
+          console.log('Error', result.err.writeErrors[0].errmsg);
+          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+        this.toastr.error('Error', error.error.msg);
+      }
+    );
+    console.log(newData);
   }
 
   handleChangePassword(event: Event) {
@@ -69,21 +107,5 @@ export class AccountSettingsComponent implements OnInit {
     this.oldPassword = '';
     this.password = '';
     this.confirmPassword = '';
-  }
-
-  handleDeleteAccount(event: Event) {
-    event.preventDefault();
-
-    const newData = {
-      password: this.deleteAccountPassword,
-      sureToDelete: this.isSureToDelete,
-      agreeToDataLoss: this.isAgreeToDataLoss,
-    };
-
-    console.log(newData);
-
-    this.deleteAccountPassword = '';
-    this.isSureToDelete = false;
-    this.isAgreeToDataLoss = false;
   }
 }
