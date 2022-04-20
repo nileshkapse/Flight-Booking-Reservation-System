@@ -1,25 +1,13 @@
 <div class="container">
   <h3 class="mb-4">Flight Booking History</h3>
   <div class="row g-4">
-    <div
-      class="col-12 col-sm-6 col-md-4"
-      *ngFor="let booking of bookingHistory"
-    >
+    <div class="col-12 col-sm-6 col-md-4" *ngFor="let booking of flightHistory">
       <div class="card" style="width: 100%; box-shadow: '0px 0px 7px #ccc'">
         <div class="card-body">
-          <h4 class="card-title font-weight-bold">{{ booking.flightName }}</h4>
+          <h4 class="card-title font-weight-bold">
+            {{ booking.tickets[0].ticketNo.split("--")[1] }}
+          </h4>
           <div class="card-text">
-            <h6
-              style="
-                padding: 15px 10px;
-                box-shadow: '0px 0px 7px #ccc';
-                margin-top: 20px;
-                border-radius: 5px;
-              "
-            >
-              Source:
-              <span style="font-weight: 400">{{ booking.routeSource }}</span>
-            </h6>
             <h6
               style="
                 padding: 15px 10px;
@@ -28,11 +16,21 @@
                 border-radius: 5px;
               "
             >
-              Destination:
-              <span style="font-weight: 400">{{
-                booking.routeDestination
-              }}</span>
+              Booking Id:
+              <span style="font-weight: 400">{{ booking._id }}</span>
             </h6>
+            <h6
+              style="
+                padding: 15px 10px;
+                box-shadow: '0px 0px 7px #ccc';
+                margin-top: 20px;
+                border-radius: 5px;
+              "
+            >
+              Flight Id:
+              <span style="font-weight: 400">{{ booking.flightId }}</span>
+            </h6>
+
             <h6
               style="
                 padding: 15px 10px;
@@ -42,7 +40,7 @@
               "
             >
               Date:
-              <span style="font-weight: 400">{{ booking.flightDate }}</span>
+              <span style="font-weight: 400">{{ booking.createdAt }}</span>
             </h6>
             <h6
               style="
@@ -53,7 +51,7 @@
               "
             >
               Total Tickets:
-              <span style="font-weight: 400">{{ booking.totalTickets }}</span>
+              <span style="font-weight: 400">{{ booking.tickets.length }}</span>
             </h6>
             <h6
               style="

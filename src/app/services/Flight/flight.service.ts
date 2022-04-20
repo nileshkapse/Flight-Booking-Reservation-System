@@ -10,11 +10,13 @@ export class FlightService {
   flights: any[];
   selectedFlight: any[];
   bookedFlight: any[];
+  flightHistory: any[];
 
   constructor(private http: HttpClient) {
     this.flights = [];
     this.selectedFlight = [];
     this.bookedFlight = [];
+    this.flightHistory = [];
   }
 
   getFetchedFlights() {
@@ -80,5 +82,20 @@ export class FlightService {
 
   getBookedFlightData() {
     return of(this.bookedFlight);
+  }
+
+  // Flight Booking
+  getFlightBookingHistory() {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/flight/booking/getbookings`,
+      {},
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
   }
 }
