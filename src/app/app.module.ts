@@ -23,6 +23,8 @@ import { FlightsComponent } from './pages/flights/flights.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 import { AddFlightComponent } from './pages/add-flight/add-flight.component';
 import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.co
     FlightDetailsComponent,
     AddFlightComponent,
     FlightTicketsComponent,
+    AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

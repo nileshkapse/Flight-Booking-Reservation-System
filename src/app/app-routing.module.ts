@@ -13,12 +13,16 @@ import { FlightsComponent } from './pages/flights/flights.component';
 import { FlightDetailsComponent } from './pages/flight-details/flight-details.component';
 import { AddFlightComponent } from './pages/add-flight/add-flight.component';
 import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login-page', component: LoginPageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'report', component: ReportComponent },
+  { path: 'aboutus', component: AboutUsComponent },
+  { path: 'contactus', component: ContactUsComponent },
   { path: 'flights', component: FlightsComponent },
   { path: 'flight-details', component: FlightDetailsComponent },
   { path: 'flight-booking', component: FlightBookingComponent },

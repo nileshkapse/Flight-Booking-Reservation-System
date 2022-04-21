@@ -96,8 +96,8 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item"> About </a>
-          <a class="navbar-item"> Contact </a>
+          <a class="navbar-item" routerLink="/aboutus"> About </a>
+          <a class="navbar-item" routerLink="/contactus"> Contact </a>
           <div *ngIf="user.length > 0">
             <hr class="navbar-divider" />
             <a class="navbar-item" routerLink="/report"> Report an issue </a>
