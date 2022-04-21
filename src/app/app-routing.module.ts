@@ -15,12 +15,14 @@ import { AddFlightComponent } from './pages/add-flight/add-flight.component';
 import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
+import { DisplayIssuesComponent } from './pages/display-issues/display-issues.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login-page', component: LoginPageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'report-issue', component: ReportComponent },
+  { path: 'issues', component: DisplayIssuesComponent },
   { path: 'aboutus', component: AboutUsComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'flights', component: FlightsComponent },

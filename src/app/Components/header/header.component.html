@@ -81,6 +81,13 @@
           >
             Add Flight
           </a>
+          <a
+            *ngIf="user[0].role === adminRole"
+            class="navbar-item"
+            routerLink="/issues"
+          >
+            Issues
+          </a>
           <a class="navbar-item" routerLink="/flight-history">
             Flight History
           </a>
