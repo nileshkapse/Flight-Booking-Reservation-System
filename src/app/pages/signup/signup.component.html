@@ -1,94 +1,207 @@
-<h1 style="margin-left: 600px; margin-top: 100px; font-weight: bold">
-  Sign Up
-</h1>
-<div class="imgcontainer">
-  <img
-    src="assets/Images/signup_icon.png"
-    alt="Avatar"
-    class="avatar"
-    style="height: 180px; width: 180px; margin-left: 560px"
-  />
-</div>
-<form action="/action_page.php" style="border: 1px solid #ccc">
-  <div class="container">
-    <p style="font-weight: bold">Fill Form to Create an Account.</p>
-    <hr />
+<div class="All" style="background-image: url(assets/Images/login11.jpg)">
+  <h1
+    style="
+      margin-left: 300px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 28px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: bolder;
+      padding-left: 200px;
+      color: whitesmoke;
+    "
+  >
+    *SIGN-UP*
+  </h1>
 
-    <form (submit)="handleFormSubmit($event)" ngNativeValidate>
-      <div>
-        <label for="name"><b>Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          name="name"
-          [(ngModel)]="name"
-          required
-        />
-      </div>
+  <form
+    action="/action_page.php"
+    style="
+      border: 0px solid #ccc;
+      padding-left: 230px;
+      padding-right: 230px;
+      padding-top: 20px;
+    "
+  >
+    <img
+      src="assets/Images/signup_icon.png"
+      alt="Avatar"
+      class="avatar"
+      style="height: 90px; width: 90px; margin-left: 300px"
+    />
 
-      <div>
-        <label for="email"><b>Email</b></label>
-        <input
-          type="email"
-          placeholder="Enter Email"
-          name="email"
-          [(ngModel)]="email"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="phone"><b>Phone Number</b></label>
-        <input
-          type="text"
-          pattern="^[0-9]{10}$"
-          placeholder="Enter Phone Number"
-          name="phone"
-          [(ngModel)]="phoneNo"
-        />
-      </div>
-      <div>
-        <label for="psw"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw"
-          [(ngModel)]="password"
-          required
-        />
-      </div>
-
-      <div>
-        <label for="psw-repeat"><b>Repeat Password</b></label>
-        <input
-          type="password"
-          placeholder="Repeat Password"
-          name="psw-repeat"
-          [(ngModel)]="repeatPassword"
-          required
-        />
-      </div>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            name="remember"
-            [(ngModel)]="rememberMe"
-            style="margin-bottom: 15px"
-          />
-          Remember me
-        </label>
-      </div>
-
-      <p>
-        By creating an account you agree to our
-        <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
+    <div class="container">
+      <p
+        style="
+          font-family: Georgia, 'Times New Roman', Times, serif;
+          font-weight: bolder;
+          color: white;
+          margin-top: 7px;
+          color: whitesmoke;
+        "
+      >
+        Fill Form to Create an Account...
       </p>
+      <hr />
 
-      <div class="clearfix">
-        <button type="submit" class="signupbtn">Sign Up</button>
-        <button type="reset" class="cancelbtn">Cancel</button>
-      </div>
-    </form>
-  </div>
-</form>
+      <form (submit)="handleFormSubmit($event)" ngNativeValidate>
+        <div>
+          <label
+            for="name"
+            style="
+              color: whitesmoke;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+            "
+            ><b>Name :</b></label
+          >
+          <input
+            type="text"
+            placeholder="Enter Name"
+            name="name"
+            [(ngModel)]="name"
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            for="email"
+            style="
+              color: whitesmoke;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+            "
+            ><b>Email :</b></label
+          >
+          <input
+            type="email"
+            placeholder="Enter Email"
+            name="email"
+            [(ngModel)]="email"
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            for="phone"
+            style="
+              color: whitesmoke;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+            "
+            ><b>Phone Number :</b></label
+          >
+          <input
+            type="text"
+            pattern="^[0-9]{10}$"
+            placeholder="Enter Phone Number"
+            name="phone"
+            [(ngModel)]="phoneNo"
+          />
+        </div>
+        <div>
+          <label
+            for="psw"
+            style="
+              color: whitesmoke;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+            "
+            ><b>Password :</b></label
+          >
+          <input
+            type="password"
+            placeholder="Enter Password"
+            name="psw"
+            [(ngModel)]="password"
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            for="psw-repeat"
+            style="
+              color: whitesmoke;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+            "
+            ><b>Repeat Password :</b></label
+          >
+          <input
+            type="password"
+            placeholder="Repeat Password"
+            name="psw-repeat"
+            [(ngModel)]="repeatPassword"
+            required
+          />
+        </div>
+        <div>
+          <label
+            style="
+              color: white;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+            "
+          >
+            <input
+              type="checkbox"
+              name="remember"
+              [(ngModel)]="rememberMe"
+              style="margin-bottom: 15px"
+            />
+            Remember me
+          </label>
+        </div>
+
+        <p
+          style="
+            color: whitesmoke;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: bolder;
+          "
+        >
+          By creating an account you agree to our
+          <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
+        </p>
+        <br />
+
+        <div class="clearfix">
+          <button
+            type="submit"
+            class="signupbtn"
+            style="
+              width: 160px;
+              margin-left: 60px;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              border-radius: 12px;
+              background-color: wheat;
+              color: black;
+            "
+          >
+            SIGN-UP
+          </button>
+          <button
+            type="reset"
+            class="cancelbtn"
+            style="
+              width: 160px;
+              margin-left: 200px;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              background-color: crimson;
+              border-radius: 12px;
+              color: white;
+            "
+          >
+            CANCEL
+          </button>
+        </div>
+      </form>
+    </div>
+  </form>
+</div>
