@@ -1,15 +1,34 @@
-<h1 style="margin-left:20px ; margin-top:30px ; color: darkred; font-weight: bolder;">REPORT ISSUE</h1>
+<h1
+  style="
+    margin-left: 20px;
+    margin-top: 30px;
+    color: darkred;
+    font-weight: bolder;
+  "
+>
+  REPORT ISSUE
+</h1>
 
-<p style="margin-left:300px ; margin-top:10px ;"><strong>Tip:</strong> Write your issue ans we will solve soon !!!</p>
+<p style="margin-left: 300px; margin-top: 10px">
+  <strong>Tip:</strong> Write your issue ans we will solve soon !!!
+</p>
 
-<form  style="align-content: center;">  <textarea>Some text...</textarea><br>
+<form
+  (submit)="handleFormSubmit()"
+  ngNativeValidate
+  style="align-content: center"
+>
+  <textarea
+    placeholder="Enter Issue"
+    name="issueTextarea"
+    [(ngModel)]="issue"
+    required
+  ></textarea
+  ><br />
 
-  <input type="submit" value="Submit" style="font-size: 21px; font-size: bolder;"  onclick="myFunction()">
+  <input
+    type="submit"
+    value="Submit"
+    style="font-size: 21px; font-size: bolder"
+  />
 </form>
-
-<script>
-
-function myFunction() {
-  alert("Your Report Has Submitted !!!");
-}
-</script>
