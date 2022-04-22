@@ -20,6 +20,10 @@ export class FlightDetailsComponent implements OnInit {
     this.flightService.getSelectedFlight().subscribe((flightData) => {
       this.selectedFlight = flightData;
     });
+
+    if (this.selectedFlight.length === 0) {
+      this.router.navigate(['/flight-booking']);
+    }
   }
 
   getTotalSeats() {

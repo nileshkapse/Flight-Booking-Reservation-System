@@ -16,10 +16,11 @@ import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.co
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { DisplayIssuesComponent } from './pages/display-issues/display-issues.component';
-import { UserLoginGuard } from './gaurds/user-login.guard';
+import { UserLoginGuard } from './guards/UserLogin/user-login.guard';
+import { FlightGudardGuard } from './guards/Flight/flight-gudard.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [FlightGudardGuard] },
   { path: 'login-page', component: LoginPageComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'aboutus', component: AboutUsComponent },
@@ -47,7 +48,7 @@ const routes: Routes = [
   {
     path: 'flight-booking',
     component: FlightBookingComponent,
-    canActivate: [UserLoginGuard],
+    canActivate: [UserLoginGuard, FlightGudardGuard],
   },
   {
     path: 'flight-tickets',
@@ -57,7 +58,7 @@ const routes: Routes = [
   {
     path: 'flight-history',
     component: FlightHistoryComponent,
-    canActivate: [UserLoginGuard],
+    canActivate: [UserLoginGuard, FlightGudardGuard],
   },
   {
     path: 'flight-receipt',

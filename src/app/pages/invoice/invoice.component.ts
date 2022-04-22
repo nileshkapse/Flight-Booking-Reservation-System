@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FlightService } from 'src/app/services/Flight/flight.service';
 
@@ -10,14 +11,10 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
 export class InvoiceComponent implements OnInit {
   bookingData: any[];
 
-  tickets = [
-    { ticketNo: '128391823', flightClass: 'Economy Class' },
-    { ticketNo: '112391823', flightClass: 'Economy Class' },
-  ];
-
   constructor(
     private toastr: ToastrService,
-    private flightService: FlightService
+    private flightService: FlightService,
+    private router: Router
   ) {
     this.bookingData = [];
   }
@@ -27,5 +24,8 @@ export class InvoiceComponent implements OnInit {
       this.bookingData = newData[0];
       console.log('Data:::', newData[0]);
     });
+    if (this.bookingData === undefined) {
+      this.router.navigate(['/flight-booking']);
+    }
   }
 }

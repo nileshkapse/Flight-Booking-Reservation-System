@@ -55,6 +55,10 @@ export class FlightTicketsComponent implements OnInit {
       this.displayBusinessClass = selectedFlightsData[0].isBusinessClass;
       this.displayFirstClass = selectedFlightsData[0].isFirstClass;
     });
+
+    if (this.selectedFlight.length === 0) {
+      this.router.navigate(['/flight-booking']);
+    }
   }
 
   handleSetFormSubmit(event: Event) {
