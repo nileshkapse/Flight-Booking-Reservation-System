@@ -3,8 +3,25 @@
   href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
 />
 
-<div class="navbar is-lightyellow" style="justify-content: center">
-  <div class="navbar-brand">
+<div
+  class="navbar is-lightyellow"
+  style="justify-content: center; z-index: 1000; position: relative"
+  *ngIf="displayWelcomeHeader"
+>
+  <div
+    style="
+      position: absolute;
+      top: 10;
+      margin-left: 95%;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    "
+    (click)="handleHeaderRemove()"
+  >
+    x
+  </div>
+  <div class="navbar-brand" style="position: relative">
     <a class="navbar-item">
       <img src="assets/Images/head_logo1.png" width="110" height="90" />
       <p
@@ -30,13 +47,15 @@
   </div>
 </div>
 
-<nav class="navbar is-info" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item">
-      <img src="{{ imageSrc }}" width="30" height="50" />
-    </a>
-  </div>
-
+<nav
+  class="navbar is-info"
+  role="navigation"
+  aria-label="main navigation"
+  style="
+    background-color: #0f67b0;
+    box-shadow: 0px -3px 10px rgb(113, 113, 113);
+  "
+>
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
       <div class="navbar-item">
