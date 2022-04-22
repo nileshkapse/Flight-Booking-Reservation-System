@@ -1,54 +1,37 @@
 <div class="All" style="background-image: url(assets/Images/login11.jpg)">
   <p
     style="
-      margin-left: 300px;
-      margin-top: 25px;
       font-weight: bold;
       font-size: 28px;
       font-family: Georgia, 'Times New Roman', Times, serif;
       font-weight: bolder;
-      padding-left: 200px;
       color: white;
+      padding-top: 30px;
+      padding-bottom: 30px;
     "
   >
-    *LOGIN*
+    LOGIN
   </p>
 
   <p></p>
 
-  <form
-    action="/action_page.php"
-    method="post"
-    style="
-      margin-top: 10px;
-      margin-left: 200px;
-      margin-right: 200px;
-      border-width: 0ch;
-    "
-  >
+  <form action="/action_page.php" method="post" style="border-width: 0ch">
     <img
       src="assets/Images/login_logo.png"
       alt="Avatar"
       class="avatar"
-      style="height: 90px; width: 100px; margin-left: 300px"
+      style="height: 90px; width: 100px"
     />
 
-    <div class="container">
+    <div class="container" style="text-align: center">
       <form
         (submit)="handleFormSubmit($event)"
         ngNativeValidate
-        style="border-width: 0ch"
+        style="border-width: 0ch; width: 50%; margin: auto"
       >
-        <div>
-          <label
-            for="uname"
-            style="
-              margin-left: 100px;
-              font-family: Georgia, 'Times New Roman', Times, serif;
-              font-weight: bolder;
-              color: white;
-            "
-            ><b> USERNAME :</b></label
+        <div style="text-align: left">
+          <label for="uname" style="font-weight: bolder; color: white"
+            ><b> USERNAME</b></label
           >
           <input
             type="text"
@@ -60,17 +43,12 @@
         </div>
 
         <br />
-        <div>
-          <label
-            for="psw1"
-            style="
-              margin-left: 100px;
-              font-family: Georgia, 'Times New Roman', Times, serif;
-              font-weight: bolder;
-              color: white;
-            "
-            ><b>PASSWORD :</b></label
-          >
+        <div style="text-align: left">
+          <h3>
+            <label for="psw1" style="font-weight: bolder; color: white"
+              ><b>PASSWORD</b></label
+            >
+          </h3>
           <input
             type="password"
             placeholder="Enter Password"
@@ -84,7 +62,6 @@
         <div>
           <label
             style="
-              margin-left: 60px;
               margin-top: 10px;
               font-family: Georgia, 'Times New Roman', Times, serif;
               font-weight: bolder;
@@ -99,7 +76,6 @@
         <button
           type="submit"
           style="
-            margin-left: 170px;
             margin-bottom: 55px;
             font-family: Georgia, 'Times New Roman', Times, serif;
             font-weight: bolder;
