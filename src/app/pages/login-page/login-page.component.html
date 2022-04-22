@@ -1,106 +1,117 @@
-<div class="All" style="background-image: url(assets/Images/login11.jpg)">
-  <p
+<div
+  class="All"
+  style="
+    background-image: url(assets/Images/login_background.jpg);
+    /* background-image: linear-gradient(#7f7fd5, #86a8e7, #91eae4); */
+    background-size: cover;
+    padding-top: 5em;
+    padding-bottom: 5em;
+  "
+>
+  <div
     style="
-      font-weight: bold;
-      font-size: 28px;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      font-weight: bolder;
-      color: white;
-      padding-top: 30px;
-      padding-bottom: 30px;
+      width: 60%;
+      margin: auto;
+      background: rgb(246, 246, 246);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 0px 10px #333;
     "
   >
-    LOGIN
-  </p>
+    <p
+      style="
+        font-weight: bold;
+        font-size: 28px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bolder;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      "
+    >
+      LOGIN
+    </p>
 
-  <p></p>
+    <p></p>
 
-  <form action="/action_page.php" method="post" style="border-width: 0ch">
-    <img
-      src="assets/Images/login_logo.png"
-      alt="Avatar"
-      class="avatar"
-      style="height: 90px; width: 100px"
-    />
-
-    <div class="container" style="text-align: center">
-      <form
-        (submit)="handleFormSubmit($event)"
-        ngNativeValidate
-        style="border-width: 0ch; width: 50%; margin: auto"
-      >
-        <div style="text-align: left">
-          <label for="uname" style="font-weight: bolder; color: white"
-            ><b> USERNAME</b></label
-          >
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="uname"
-            [(ngModel)]="username"
-            required
-          />
-        </div>
-
-        <br />
-        <div style="text-align: left">
-          <h3>
-            <label for="psw1" style="font-weight: bolder; color: white"
-              ><b>PASSWORD</b></label
+    <form action="/action_page.php" method="post" style="border-width: 0ch">
+      <div class="container" style="text-align: center">
+        <form
+          (submit)="handleFormSubmit($event)"
+          ngNativeValidate
+          style="border-width: 0ch; margin: auto"
+        >
+          <div style="text-align: left">
+            <label for="uname" style="font-weight: bolder"
+              ><b> USERNAME</b></label
             >
-          </h3>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw1"
-            [(ngModel)]="password"
-            required
-          />
-        </div>
-        <br />
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="uname"
+              [(ngModel)]="username"
+              required
+            />
+          </div>
 
-        <div>
-          <label
+          <br />
+          <div style="text-align: left">
+            <h3>
+              <label for="psw1" style="font-weight: bolder"
+                ><b>PASSWORD</b></label
+              >
+            </h3>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw1"
+              [(ngModel)]="password"
+              required
+            />
+          </div>
+          <br />
+
+          <div>
+            <label
+              style="
+                margin-top: 10px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: bolder;
+              "
+            >
+              <input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
+              Remember me
+            </label>
+          </div>
+
+          <button
+            type="submit"
             style="
-              margin-top: 10px;
+              margin-bottom: 20px;
               font-family: Georgia, 'Times New Roman', Times, serif;
               font-weight: bolder;
-              color: white;
+              border-radius: 12px;
+              background-color: rgb(249, 192, 86);
+              color: black;
             "
           >
-            <input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
-            Remember me
-          </label>
-        </div>
+            LOGIN
+          </button>
 
-        <button
-          type="submit"
-          style="
-            margin-bottom: 55px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-weight: bolder;
-            border-radius: 12px;
-            background-color: wheat;
-            color: black;
-          "
-        >
-          LOGIN
-        </button>
-
-        <button
-          type="reset"
-          style="
-            background-color: crimson;
-            margin-left: 130px;
-            margin-bottom: 55px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-weight: bolder;
-            border-radius: 12px;
-          "
-        >
-          CANCEL
-        </button>
-      </form>
-    </div>
-  </form>
+          <button
+            type="reset"
+            style="
+              background-color: crimson;
+              margin-left: 130px;
+              margin-bottom: 20px;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              border-radius: 12px;
+            "
+          >
+            CANCEL
+          </button>
+        </form>
+      </div>
+    </form>
+  </div>
 </div>
