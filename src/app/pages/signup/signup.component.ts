@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/User/user.service';
 
@@ -8,6 +9,7 @@ import { UserService } from 'src/app/services/User/user.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  user: any[];
   name: string;
   email: string;
   phoneNo: string;
@@ -15,7 +17,12 @@ export class SignupComponent implements OnInit {
   repeatPassword: string;
   rememberMe: boolean;
 
-  constructor(private userService: UserService, private toastr: ToastrService) {
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private toastr: ToastrService
+  ) {
+    this.user = [];
     this.name = '';
     this.email = '';
     this.phoneNo = '';
@@ -24,7 +31,15 @@ export class SignupComponent implements OnInit {
     this.rememberMe = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe((userData) => {
+      this.user = userData;
+    });
+
+    if (this.user.length > 0) {
+      this.router.navigate(['/']);
+    }
+  }
 
   handleFormSubmit(event: Event) {
     event.preventDefault();

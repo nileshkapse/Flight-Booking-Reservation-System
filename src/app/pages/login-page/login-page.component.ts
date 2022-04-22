@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/User/user.service';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
+  user: any[];
   username: string;
   password: string;
   rememberMe: boolean;
@@ -18,12 +19,21 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService
   ) {
+    this.user = [];
     this.username = '';
     this.password = '';
     this.rememberMe = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe((userData) => {
+      this.user = userData;
+    });
+
+    if (this.user.length > 0) {
+      this.router.navigate(['/']);
+    }
+  }
 
   handleFormSubmit(event: Event) {
     event.preventDefault();
