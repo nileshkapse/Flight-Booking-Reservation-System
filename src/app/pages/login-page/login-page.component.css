@@ -12,7 +12,7 @@ input[type="password"] {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(242, 242, 242, 0.9);
   color: #fff;
 }
 

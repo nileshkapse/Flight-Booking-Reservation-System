@@ -15,12 +15,14 @@ input[type="password"] {
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  border: 1px solid #ccc;
+  background-color: rgba(242, 242, 242, 0.9);
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  background-color: #ddd;
+  background-color: rgba(242, 242, 242, 0.9);
+  border: 1px solid #ccc;
   outline: none;
 }
 
