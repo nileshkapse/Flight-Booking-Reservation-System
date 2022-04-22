@@ -1,55 +1,5 @@
-<div class="flight-class-buttons">
-  <div
-    class="card mt-5"
-    style="width: 100%; box-shadow: '0px 0px 7px #ccc'; background-color: white"
-  >
-    <div class="card-body">
-      <h4 class="card-title font-weight-bold">Flight Classes</h4>
-      <div class="ml-5" style="font-size: 18px; color: black">
-        <div class="mt-3" *ngIf="displayEconomyClass">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="economy-flight-classes"
-            name="economy-flight-classes"
-            [(ngModel)]="isEconomyClass"
-          />
-          <label class="form-check-label" for="economy-flight-classes ">
-            Economy Class
-          </label>
-        </div>
-        <div class="mt-2" *ngIf="displayBusinessClass">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="business-flight-classes"
-            name="business-flight-classes"
-            [(ngModel)]="isBusinessClass"
-          />
-          <label class="form-check-label" for="business-flight-classes">
-            Business Class
-          </label>
-        </div>
-        <div class="mt-2 mb-4" *ngIf="displayFirstClass">
-          <input
-            class="form-check-input"
-            type="checkbox"
-            id="first-flight-classes"
-            name="first-flight-classes"
-            [(ngModel)]="isFirstClass"
-          />
-          <label class="form-check-label" for="first-flight-classes">
-            First Class
-          </label>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div>
-  <form (submit)="handleSetFormSubmit($event)" ngNativeValidate>
-    <!-- Economy Class -->
+<div class="container">
+  <div class="flight-class-buttons">
     <div
       class="card mt-5"
       style="
@@ -57,27 +7,82 @@
         box-shadow: '0px 0px 7px #ccc';
         background-color: white;
       "
-      *ngIf="isEconomyClass"
     >
       <div class="card-body">
-        <h4 class="card-title font-weight-bold">Economy Class Details</h4>
-        <div>
-          <label
-            for="Fclass"
-            style="font-size: 18px; font-weight: bold; color: black"
-            >Total Tickets
-          </label>
-          <input
-            type="text"
-            id="Fclass"
-            name="totalTickets"
-            placeholder="Enter Total Tickets"
-            pattern="[0-9]+"
-            [(ngModel)]="economyClassTickets"
-          />
+        <h4 class="card-title font-weight-bold">Flight Classes</h4>
+        <div class="ml-5" style="font-size: 18px; color: black">
+          <div class="mt-3" *ngIf="displayEconomyClass">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="economy-flight-classes"
+              name="economy-flight-classes"
+              [(ngModel)]="isEconomyClass"
+            />
+            <label class="form-check-label" for="economy-flight-classes ">
+              Economy Class
+            </label>
+          </div>
+          <div class="mt-2" *ngIf="displayBusinessClass">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="business-flight-classes"
+              name="business-flight-classes"
+              [(ngModel)]="isBusinessClass"
+            />
+            <label class="form-check-label" for="business-flight-classes">
+              Business Class
+            </label>
+          </div>
+          <div class="mt-2 mb-4" *ngIf="displayFirstClass">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="first-flight-classes"
+              name="first-flight-classes"
+              [(ngModel)]="isFirstClass"
+            />
+            <label class="form-check-label" for="first-flight-classes">
+              First Class
+            </label>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- <div>
+  <div>
+    <form (submit)="handleSetFormSubmit($event)" ngNativeValidate>
+      <!-- Economy Class -->
+      <div
+        class="card mt-5"
+        style="
+          width: 100%;
+          box-shadow: '0px 0px 7px #ccc';
+          background-color: white;
+        "
+        *ngIf="isEconomyClass"
+      >
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Economy Class Details</h4>
+          <div>
+            <label
+              for="Fclass"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Total Tickets
+            </label>
+            <input
+              type="text"
+              id="Fclass"
+              name="totalTickets"
+              placeholder="Enter Total Tickets"
+              pattern="[0-9]+"
+              [(ngModel)]="economyClassTickets"
+            />
+          </div>
+
+          <!-- <div>
           <label
             for="Fcapacity"
             style="font-size: 18px; font-weight: bold; color: black"
@@ -94,38 +99,38 @@
             readonly
           />
         </div> -->
-      </div>
-    </div>
-
-    <!-- Business Class -->
-    <div
-      class="card mt-5"
-      style="
-        width: 100%;
-        box-shadow: '0px 0px 7px #ccc';
-        background-color: white;
-      "
-      *ngIf="isBusinessClass"
-    >
-      <div class="card-body">
-        <h4 class="card-title font-weight-bold">Business Class Details</h4>
-        <div>
-          <label
-            for="Fclass"
-            style="font-size: 18px; font-weight: bold; color: black"
-            >Total Tickets
-          </label>
-          <input
-            type="text"
-            id="Fclass"
-            name="totalSeats"
-            placeholder="Enter Total Tickets"
-            pattern="[0-9]+"
-            [(ngModel)]="businessClassTickets"
-          />
         </div>
+      </div>
 
-        <!-- <div>
+      <!-- Business Class -->
+      <div
+        class="card mt-5"
+        style="
+          width: 100%;
+          box-shadow: '0px 0px 7px #ccc';
+          background-color: white;
+        "
+        *ngIf="isBusinessClass"
+      >
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Business Class Details</h4>
+          <div>
+            <label
+              for="Fclass"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Total Tickets
+            </label>
+            <input
+              type="text"
+              id="Fclass"
+              name="totalSeats"
+              placeholder="Enter Total Tickets"
+              pattern="[0-9]+"
+              [(ngModel)]="businessClassTickets"
+            />
+          </div>
+
+          <!-- <div>
           <label
             for="Fcapacity"
             style="font-size: 18px; font-weight: bold; color: black"
@@ -142,38 +147,38 @@
             readonly
           />
         </div> -->
-      </div>
-    </div>
-
-    <!-- First Class -->
-    <div
-      class="card mt-5"
-      style="
-        width: 100%;
-        box-shadow: '0px 0px 7px #ccc';
-        background-color: white;
-      "
-      *ngIf="isFirstClass"
-    >
-      <div class="card-body">
-        <h4 class="card-title font-weight-bold">First Class Details</h4>
-        <div>
-          <label
-            for="Fclass"
-            style="font-size: 18px; font-weight: bold; color: black"
-            >Total Tickets
-          </label>
-          <input
-            type="text"
-            id="Fclass"
-            name="totalSeats"
-            placeholder="Enter Total Tickets"
-            pattern="[0-9]+"
-            [(ngModel)]="firstClassTickets"
-          />
         </div>
+      </div>
 
-        <!-- <div>
+      <!-- First Class -->
+      <div
+        class="card mt-5"
+        style="
+          width: 100%;
+          box-shadow: '0px 0px 7px #ccc';
+          background-color: white;
+        "
+        *ngIf="isFirstClass"
+      >
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">First Class Details</h4>
+          <div>
+            <label
+              for="Fclass"
+              style="font-size: 18px; font-weight: bold; color: black"
+              >Total Tickets
+            </label>
+            <input
+              type="text"
+              id="Fclass"
+              name="totalSeats"
+              placeholder="Enter Total Tickets"
+              pattern="[0-9]+"
+              [(ngModel)]="firstClassTickets"
+            />
+          </div>
+
+          <!-- <div>
           <label
             for="Fcapacity"
             style="font-size: 18px; font-weight: bold; color: black"
@@ -190,65 +195,66 @@
             readonly
           />
         </div> -->
+        </div>
       </div>
-    </div>
-    <div class="flight-book-button d-grid mt-5">
-      <button type="submit" class="btn btn-primary" style="width: 100%">
-        Set
-      </button>
-    </div>
-  </form>
-</div>
+      <div class="flight-book-button d-grid mt-5 mb-5">
+        <button type="submit" class="btn btn-primary" style="width: 100%">
+          Set
+        </button>
+      </div>
+    </form>
+  </div>
 
-<div
-  class="card mt-5"
-  style="width: 100%; box-shadow: '0px 0px 7px #ccc'; background-color: white"
-  *ngIf="displayFinalCosting"
->
-  <div class="card-body">
-    <h4 class="card-title font-weight-bold">Final Costing</h4>
-    <div>
-      <label
-        for="Fclass"
-        style="font-size: 18px; font-weight: bold; color: black"
-        >Total Tickets
-      </label>
-      <input
-        type="text"
-        id="Fclass"
-        name="totalSeats"
-        placeholder="Enter Total Tickets"
-        pattern="[0-9]+"
-        [(ngModel)]="finalTotalTickets"
-      />
-    </div>
+  <div
+    class="card mt-5 mb-5"
+    style="width: 100%; box-shadow: '0px 0px 7px #ccc'; background-color: white"
+    *ngIf="displayFinalCosting"
+  >
+    <div class="card-body">
+      <h4 class="card-title font-weight-bold">Final Costing</h4>
+      <div>
+        <label
+          for="Fclass"
+          style="font-size: 18px; font-weight: bold; color: black"
+          >Total Tickets
+        </label>
+        <input
+          type="text"
+          id="Fclass"
+          name="totalSeats"
+          placeholder="Enter Total Tickets"
+          pattern="[0-9]+"
+          [(ngModel)]="finalTotalTickets"
+        />
+      </div>
 
-    <div>
-      <label
-        for="Fcapacity"
-        style="font-size: 18px; font-weight: bold; color: black"
-      >
-        Total Ticket Price
-      </label>
-      <input
-        type="text"
-        id="Fcapacity"
-        name="ticketPrice"
-        placeholder="Ticket Price"
-        [(ngModel)]="finalTotalPrice"
-        disabled
-        readonly
-      />
-    </div>
-    <div class="flight-book-button d-grid mt-3">
-      <button
-        type="submit"
-        class="btn btn-primary"
-        style="width: 100%"
-        (click)="bookFlight()"
-      >
-        Book
-      </button>
+      <div>
+        <label
+          for="Fcapacity"
+          style="font-size: 18px; font-weight: bold; color: black"
+        >
+          Total Ticket Price
+        </label>
+        <input
+          type="text"
+          id="Fcapacity"
+          name="ticketPrice"
+          placeholder="Ticket Price"
+          [(ngModel)]="finalTotalPrice"
+          disabled
+          readonly
+        />
+      </div>
+      <div class="flight-book-button d-grid mt-3">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="width: 100%"
+          (click)="bookFlight()"
+        >
+          Book
+        </button>
+      </div>
     </div>
   </div>
 </div>
