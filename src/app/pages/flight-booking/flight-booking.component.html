@@ -1,109 +1,167 @@
-	<div id="booking" class="section">
-		<div class="section-center">
-			<div class="container">
-				<div class="row">
-					<div class="booking-form">
-						<form>
-							<div class="form-group">
-								<div class="form-checkbox">
-									<label for="roundtrip">
-										<input type="radio" id="roundtrip" name="flight-type">
-										<span></span>Round
-									</label>
-									<label for="one-way">
-										<input type="radio" id="one-way" name="flight-type">
-										<span></span>One way
-									</label>
-									<label for="multi-city">
-										<input type="radio" id="multi-city" name="flight-type">
-										<span></span>Multi-City
-									</label>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Flying from</span>
-										<!-- <input class="form-control" type="text" placeholder="City or airport"> -->
-										<!--<div id="departsfrom-div" name="departsfrom-div" placeholder="Origin" class="col-xs-12 col-sm-6 col-md-3 widget-div-input scombobox padd-btm-1per marg-0 departsfrom-div"></div>
+<div id="booking" class="section">
+  <div class="section-center">
+    <div class="container">
+      <div class="row">
+        <div class="booking-form">
+          <form (submit)="handleFormSubmit($event)" ngNativeValidate>
+            <!-- <div class="form-group">
+              <div class="form-group">
+                <span class="form-label">Trip Type</span>
+                <select
+                  class="form-control"
+                  [(ngModel)]="tripType"
+                  name="adult-count"
+                  required
+                >
+                  <option>Round Trip</option>
+                  <option>One Way Trip</option>
+                </select>
+                <span class="select-arrow"></span>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Flying from</span>
+                  <!-- <input class="form-control" type="text" placeholder="City or airport"> -->
+                  <!--<div id="departsfrom-div" name="departsfrom-div" placeholder="Origin" class="col-xs-12 col-sm-6 col-md-3 widget-div-input scombobox padd-btm-1per marg-0 departsfrom-div"></div>
 										<input class="scombobox-display valid" placeholder="Origin" type="text" spellcheck="false" name="flightSearchFrom" aria-label="Search origin">-->
-										 <select id="from" class="form-control  departsfrom-select"><option value="ABZ">Aberdeen (ABZ) </option><option value="ADL">Adelaide (ADL) </option><option value="AMD">Ahmedabad (AMD) </option><option value="ATQ">Amritsar (ATQ) </option><option value="AKL">Auckland (AKL) </option><option value="IXB">Bagdogra (IXB) </option><option value="BPN">Balikpapan (BPN) </option><option value="BDO">Bandung (BDO) </option><option value="BKK">Bangkok (BKK) </option><option value="BFS">Belfast (BFS) </option><option value="BLR">Bengaluru (BLR) </option><option value="BBI">Bhubaneswar (BBI) </option><option value="BNE">Brisbane (BNE) </option><option value="CNS">Cairns (CNS) </option><option value="CBR">Canberra (CBR) </option><option value="IXC">Chandigarh (IXC) </option><option value="MAA">Chennai (MAA) </option><option value="CHC">Christchurch (CHC) </option><option value="CMB">Colombo (CMB) </option><option value="DRW">Darwin (DRW) </option><option value="DED">Dehradun (DED) </option><option value="DEL">Delhi (DEL) </option><option value="DPS">Denpasar Bali (DPS) </option><option value="DAC">Dhaka (DAC) </option><option value="DIB">Dibrugarh (DIB) </option><option value="DOH">Doha (DOH) </option><option value="DXB">Dubai (DXB) </option><option value="DUB">Dublin (DUB) </option><option value="EDI">Edinburgh (EDI) </option><option value="FRA">Frankfurt (FRA) </option><option value="GLA">Glasgow (GLA) </option><option value="GOI">Goa (GOI) </option><option value="GAU">Guwahati (GAU) </option><option value="HAN">Hanoi (HAN) </option><option value="SGN">Ho Chi Minh City (SGN) </option><option value="HYD">Hyderabad (HYD) </option><option value="IDR">Indore (IDR) </option><option value="INV">Inverness (INV) </option><option value="CGK">Jakarta (CGK) </option><option value="IXJ">Jammu (IXJ) </option><option value="JDH">Jodhpur (JDH) </option><option value="KTM">Kathmandu (KTM) </option><option value="HJR">Khajuraho (HJR) </option><option value="USM">Ko Samui (USM) </option><option value="COK">Kochi (COK) </option><option value="CCU">Kolkata (CCU) </option><option value="KUL">Kuala Lumpur (KUL) </option><option value="IXL">Leh (IXL) </option><option value="LOP">Lombok (LOP) </option><option value="LHR">London (LHR) </option><option value="LKO">Lucknow (LKO) </option><option value="MLE">Male (MLE) </option><option value="MDC">Manado (MDC) </option><option value="MAN">Manchester (MAN) </option><option value="KNO">Medan (KNO) </option><option value="MEL">Melbourne (MEL) </option><option value="BOM">Mumbai (BOM) </option><option value="NCL">Newcastle (NCL) </option><option value="CDG">Paris (CDG) </option><option value="PAT">Patna (PAT) </option><option value="PER">Perth (PER) </option><option value="PNH">Phnom Penh (PNH) </option><option value="HKT">Phuket (HKT) </option><option value="IXZ">Port Blair (IXZ) </option><option value="PNQ">Pune (PNQ) </option><option value="RPR">Raipur (RPR) </option><option value="IXR">Ranchi (IXR) </option><option value="SHJ">Sharjah (SHJ) </option><option value="SIN">Singapore (SIN) </option><option value="SXR">Srinagar (SXR) </option><option value="SUB">Surabaya (SUB) </option><option value="SYD">Sydney (SYD) </option><option value="TRV">Thiruvananthapuram (TRV) </option><option value="HND">Tokyo (HND) </option><option value="UDR">Udaipur (UDR) </option><option value="VNS">Varanasi (VNS) </option><option value="WLG">Wellington (WLG) </option><option value="JOG">Yogyakarta (JOG) </option></select>
-										
-									</div>
-								</div>
-								
-								<div class="col-md-6">
-									<div class="form-group">
-										<span class="form-label">Flyning to</span>
-										 <select id="from" class="form-control  departsfrom-select"><option value="ABZ">Aberdeen (ABZ) </option><option value="ADL">Adelaide (ADL) </option><option value="AMD">Ahmedabad (AMD) </option><option value="ATQ">Amritsar (ATQ) </option><option value="AKL">Auckland (AKL) </option><option value="IXB">Bagdogra (IXB) </option><option value="BPN">Balikpapan (BPN) </option><option value="BDO">Bandung (BDO) </option><option value="BKK">Bangkok (BKK) </option><option value="BFS">Belfast (BFS) </option><option value="BLR">Bengaluru (BLR) </option><option value="BBI">Bhubaneswar (BBI) </option><option value="BNE">Brisbane (BNE) </option><option value="CNS">Cairns (CNS) </option><option value="CBR">Canberra (CBR) </option><option value="IXC">Chandigarh (IXC) </option><option value="MAA">Chennai (MAA) </option><option value="CHC">Christchurch (CHC) </option><option value="CMB">Colombo (CMB) </option><option value="DRW">Darwin (DRW) </option><option value="DED">Dehradun (DED) </option><option value="DEL">Delhi (DEL) </option><option value="DPS">Denpasar Bali (DPS) </option><option value="DAC">Dhaka (DAC) </option><option value="DIB">Dibrugarh (DIB) </option><option value="DOH">Doha (DOH) </option><option value="DXB">Dubai (DXB) </option><option value="DUB">Dublin (DUB) </option><option value="EDI">Edinburgh (EDI) </option><option value="FRA">Frankfurt (FRA) </option><option value="GLA">Glasgow (GLA) </option><option value="GOI">Goa (GOI) </option><option value="GAU">Guwahati (GAU) </option><option value="HAN">Hanoi (HAN) </option><option value="SGN">Ho Chi Minh City (SGN) </option><option value="HYD">Hyderabad (HYD) </option><option value="IDR">Indore (IDR) </option><option value="INV">Inverness (INV) </option><option value="CGK">Jakarta (CGK) </option><option value="IXJ">Jammu (IXJ) </option><option value="JDH">Jodhpur (JDH) </option><option value="KTM">Kathmandu (KTM) </option><option value="HJR">Khajuraho (HJR) </option><option value="USM">Ko Samui (USM) </option><option value="COK">Kochi (COK) </option><option value="CCU">Kolkata (CCU) </option><option value="KUL">Kuala Lumpur (KUL) </option><option value="IXL">Leh (IXL) </option><option value="LOP">Lombok (LOP) </option><option value="LHR">London (LHR) </option><option value="LKO">Lucknow (LKO) </option><option value="MLE">Male (MLE) </option><option value="MDC">Manado (MDC) </option><option value="MAN">Manchester (MAN) </option><option value="KNO">Medan (KNO) </option><option value="MEL">Melbourne (MEL) </option><option value="BOM">Mumbai (BOM) </option><option value="NCL">Newcastle (NCL) </option><option value="CDG">Paris (CDG) </option><option value="PAT">Patna (PAT) </option><option value="PER">Perth (PER) </option><option value="PNH">Phnom Penh (PNH) </option><option value="HKT">Phuket (HKT) </option><option value="IXZ">Port Blair (IXZ) </option><option value="PNQ">Pune (PNQ) </option><option value="RPR">Raipur (RPR) </option><option value="IXR">Ranchi (IXR) </option><option value="SHJ">Sharjah (SHJ) </option><option value="SIN">Singapore (SIN) </option><option value="SXR">Srinagar (SXR) </option><option value="SUB">Surabaya (SUB) </option><option value="SYD">Sydney (SYD) </option><option value="TRV">Thiruvananthapuram (TRV) </option><option value="HND">Tokyo (HND) </option><option value="UDR">Udaipur (UDR) </option><option value="VNS">Varanasi (VNS) </option><option value="WLG">Wellington (WLG) </option><option value="JOG">Yogyakarta (JOG) </option></select>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="form-group">
-										<span class="form-label">Departing</span>
-										<input class="form-control" type="date" required>
-										
-									</div>
-								</div>
-								<div class="col-md-5">
-									<div class="form-group">
-										<span class="form-label">Returning</span>
-										<input class="form-control" type="date" required>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">Adults (18+)</span>
-										<select class="form-control">
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-											<option>5</option>
-											<option>6</option>
-										</select>
-										<span class="select-arrow"></span>
-									</div>
-								</div>
-								<div class="col-md-3">
-									<div class="form-group">
-										<span class="form-label">Children (0-17)</span>
-										<select class="form-control">
-											<option>0</option>
-											<option>1</option>
-											<option>2</option>
-											<option>3</option>
-											<option>4</option>
-										</select>
-										<span class="select-arrow"></span>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-5">
-									<div class="form-group">
-										<span class="form-label">Travel class</span>
-										<select class="form-control">
-											<option selected>Select Class</option>
-											<option>Economy class</option>
-											<option>Business class</option>
-											<option>First class</option>
-										</select>
-										<span class="select-arrow"></span>
-									</div>
-								</div>
-								<div class="col-md-5">
-									<div class="form-btn">
-										<button class="submit-btn">Show flights</button>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	</div>
+                  <select
+                    id="from"
+                    name="from"
+                    class="form-control departsfrom-select"
+                    [(ngModel)]="origin"
+                    required
+                  >
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Amritsar">Amritsar</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Kota">Kota</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <span class="form-label">Flying to</span>
+                  <select
+                    id="from"
+                    name="from"
+                    class="form-control departsfrom-select"
+                    [(ngModel)]="destination"
+                    required
+                  >
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Patna">Patna</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Amritsar">Amritsar</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Kota">Kota</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Chennai">Chennai</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <span class="form-label">Departing</span>
+                  <input
+                    class="form-control"
+                    type="date"
+                    name="departureDate"
+                    required
+                    [(ngModel)]="departureDate"
+                  />
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-group">
+                  <span class="form-label">Returning</span>
+                  <input
+                    class="form-control"
+                    type="date"
+                    required
+                    name="returnDate"
+                    [(ngModel)]="returnDate"
+                  />
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <span class="form-label">Adults (18+)</span>
+                  <select
+                    class="form-control"
+                    [(ngModel)]="adultCount"
+                    name="adult-count"
+                    required
+                  >
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                  </select>
+                  <span class="select-arrow"></span>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <span class="form-label">Children (0-17)</span>
+                  <select
+                    class="form-control"
+                    [(ngModel)]="childrenCount"
+                    name="childrenCount"
+                    required
+                  >
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                  </select>
+                  <span class="select-arrow"></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-5">
+                <div class="form-group">
+                  <span class="form-label">Travel class</span>
+                  <select
+                    class="form-control"
+                    [(ngModel)]="flightClass"
+                    name="flightClass"
+                    required
+                  >
+                    <option>Any</option>
+                    <option>Economy Class</option>
+                    <option>Business Class</option>
+                    <option>First Class</option>
+                  </select>
+                  <span class="select-arrow"></span>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="form-btn">
+                  <button class="submit-btn" type="submit">Show flights</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

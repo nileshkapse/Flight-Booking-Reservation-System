@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -6,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-settings.component.css'],
 })
 export class AccountSettingsComponent implements OnInit {
+  currentUserData: any[];
+
   // Update Account Details Variables
-  username: string;
   name: string;
-  dateOfBirth: string;
+  phoneNo: string;
 
   // Change Password Variables
   oldPassword: string;
@@ -21,10 +25,14 @@ export class AccountSettingsComponent implements OnInit {
   isSureToDelete: boolean;
   isAgreeToDataLoss: boolean;
 
-  constructor() {
-    this.username = '';
+  constructor(
+    private userService: UserService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
+    this.currentUserData = [];
     this.name = '';
-    this.dateOfBirth = '';
+    this.phoneNo = '';
 
     this.oldPassword = '';
     this.password = '';
@@ -35,55 +43,104 @@ export class AccountSettingsComponent implements OnInit {
     this.isAgreeToDataLoss = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getCurrentUserData().subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.isDone) {
+          console.log('Fetched Userdata');
+
+          this.toastr.success('Fetched Userdata');
+          this.currentUserData.splice(0, 1);
+          this.currentUserData.push([...result.data]);
+
+          this.name = result.data[0].name;
+          this.phoneNo = result.data[0].phoneNo;
+        } else {
+          console.log('Error', result.err.writeErrors[0].errmsg);
+          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+        this.toastr.error('Error', error.error.msg);
+      }
+    );
+  }
 
   handleUpdateAccoutDetails(event: Event) {
     event.preventDefault();
 
     const newData = {
-      username: this.username,
       name: this.name,
-      dateOfBirth: this.dateOfBirth,
+      phoneNo: this.phoneNo,
     };
 
+    this.userService.updateAccountDetails(newData).subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.data.modifiedCount > 0) {
+          console.log('Data Updated Successfully');
+          this.toastr.success('Data Updated Successfully');
+        } else {
+          console.log('Error', 'Failed to update details');
+          this.toastr.error('Error', 'Failed to update details');
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+        this.toastr.error('Error', error.error.msg);
+      }
+    );
     console.log(newData);
-
-    this.username = '';
-    this.name = '';
-    this.dateOfBirth = '';
   }
 
   handleChangePassword(event: Event) {
     event.preventDefault();
 
     if (this.password !== this.confirmPassword) {
+      this.toastr.error('Error', 'Password and confirm password not matched');
       return console.log('Password and confirm password not matched');
     }
     const newData = {
       oldPassword: this.oldPassword,
-      password: this.password,
+      newPassword: this.password,
     };
 
     console.log(newData);
+    this.userService.changeUserPassword(newData).subscribe(
+      (result: any) => {
+        console.log(result);
 
-    this.oldPassword = '';
-    this.password = '';
-    this.confirmPassword = '';
-  }
+        if (result.isError) {
+          this.toastr.error('Error', result.msg);
+          return console.log(result.msg);
+        }
 
-  handleDeleteAccount(event: Event) {
-    event.preventDefault();
+        if (result.hasOwnProperty('isAuthorized')) {
+          if (!result.isAuthorized) {
+            this.toastr.error('Password Authentication Error', result.msg);
+            return console.log(result.msg);
+          }
+        }
 
-    const newData = {
-      password: this.deleteAccountPassword,
-      sureToDelete: this.isSureToDelete,
-      agreeToDataLoss: this.isAgreeToDataLoss,
-    };
+        this.toastr.success('Old Password is Valid', 'Changing password');
+        if (result.data.modifiedCount > 0) {
+          console.log('Password Changed Successfully');
+          this.toastr.success('Password Changed Successfully');
 
-    console.log(newData);
-
-    this.deleteAccountPassword = '';
-    this.isSureToDelete = false;
-    this.isAgreeToDataLoss = false;
+          localStorage.clear();
+          this.userService.logoutUser();
+          this.router.navigate(['/login-page']);
+        } else {
+          console.log('Error', 'Failed to change password');
+          this.toastr.error('Error', 'Failed to change password');
+        }
+      },
+      (err) => {
+        console.log(err);
+        this.toastr.error('Error', err);
+      }
+    );
   }
 }

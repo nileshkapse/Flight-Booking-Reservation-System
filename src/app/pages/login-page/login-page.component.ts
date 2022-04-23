@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
@@ -8,17 +9,31 @@ import { UserService } from 'src/app/services/User/user.service';
   styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit {
+  user: any[];
   username: string;
   password: string;
   rememberMe: boolean;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
+    this.user = [];
     this.username = '';
     this.password = '';
     this.rememberMe = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe((userData) => {
+      this.user = userData;
+    });
+
+    if (this.user.length > 0) {
+      this.router.navigate(['/']);
+    }
+  }
 
   handleFormSubmit(event: Event) {
     event.preventDefault();
@@ -34,11 +49,15 @@ export class LoginPageComponent implements OnInit {
         console.log(result);
 
         if (result.isError) {
+          this.toastr.error('Error', result.msg);
           return console.log(result.msg);
         }
 
         if (result.hasOwnProperty('isAuthorized')) {
-          if (!result.isAuthorized) return console.log(result.msg);
+          if (!result.isAuthorized) {
+            this.toastr.error('Error', result.msg);
+            return console.log(result.msg);
+          }
         }
 
         const newUser: any = {
@@ -47,21 +66,33 @@ export class LoginPageComponent implements OnInit {
           role: result.role,
           username: result.username,
           name: result.name,
-          token: result.token,
           rememberMe: this.rememberMe,
         };
 
+        this.toastr.success('Authorized User', 'Account LoggedIn Successfully');
+
+        // Saving data to localstorage
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('username', result.username);
+        localStorage.setItem('id', result.id);
+        localStorage.setItem('role', result.role);
+        localStorage.setItem('name', result.name);
+        localStorage.setItem('email', result.email);
+
         this.userService.user.push(newUser);
+
+        console.log('Login Data: ', newData);
+
+        this.username = '';
+        this.password = '';
+        this.rememberMe = false;
 
         this.router.navigate(['']);
       },
-      (err) => console.log(err)
+      (err) => {
+        console.log(err);
+        this.toastr.error('Error', err);
+      }
     );
-
-    console.log('Login Data: ', newData);
-
-    this.username = '';
-    this.password = '';
-    this.rememberMe = false;
   }
 }

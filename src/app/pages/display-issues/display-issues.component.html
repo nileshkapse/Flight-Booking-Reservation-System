@@ -1,0 +1,38 @@
+<div
+  class="card"
+  *ngFor="let issue of issues"
+  style="width: 100%; box-shadow: '0px 0px 7px #ccc'; margin-bottom: 16px"
+>
+  <div class="card-body">
+    <div class="card-text">
+      <h6 style="margin-bottom: 12px">
+        <b>User ID:</b>{{ " " }}
+        <span style="font-weight: 400">{{ issue.userId }}</span>
+      </h6>
+      <h6 style="margin-bottom: 12px">
+        <b>Username:</b>{{ " " }}
+        <span style="font-weight: 400">{{ issue.username }}</span>
+      </h6>
+
+      <h6 style="margin-bottom: 12px">
+        <b>Email:</b>{{ " " }}
+        <span style="font-weight: 400">{{ issue.email }}</span>
+      </h6>
+      <h6 style="margin-bottom: 12px">
+        <b>Issue Raise Date:</b>{{ " " }}
+        <span style="font-weight: 400">{{ issue.createdAt }}</span>
+      </h6>
+      <h6
+        style="
+          padding: 15px 10px;
+          box-shadow: '0px 0px 7px #ccc';
+          margin-top: 15px;
+          border-radius: 5px;
+        "
+      >
+        <b>Issue:</b>{{ " " }}
+        <span style="font-weight: 400">{{ issue.issue }}</span>
+      </h6>
+    </div>
+  </div>
+</div>

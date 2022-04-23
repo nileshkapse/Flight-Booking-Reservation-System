@@ -1,59 +1,115 @@
-<h1 style="margin-left: 600px; margin-top: 100px; font-weight: bold">
-  Login Form
-</h1>
+<div
+  class="All"
+  style="
+    background-image: url(assets/Images/login_background.jpg);
+    background-size: cover;
+    padding-top: 5em;
+    padding-bottom: 5em;
+  "
+>
+  <div
+    style="
+      width: 60%;
+      margin: auto;
+      background: rgb(246, 246, 246);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0px 0px 10px #333;
+    "
+  >
+    <p
+      style="
+        font-weight: bold;
+        font-size: 28px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: bolder;
+        padding-top: 30px;
+        padding-bottom: 30px;
+      "
+    >
+      LOGIN
+    </p>
 
-<form action="/action_page.php" method="post">
-  <div class="imgcontainer">
-    <img
-      src="assets/Images/login_icon.png"
-      alt="Avatar"
-      class="avatar"
-      style="height: 160px; width: 160px"
-    />
-  </div>
+    <p></p>
 
-  <div class="container">
-    <form (submit)="handleFormSubmit($event)" ngNativeValidate>
-      <div>
-        <label for="uname" style="margin-left: 300px"><b>Username</b></label>
-        <input
-          type="text"
-          placeholder="Enter Username"
-          name="uname"
-          [(ngModel)]="username"
-          required
-        />
+    <form action="/action_page.php" method="post" style="border-width: 0ch">
+      <div class="container" style="text-align: center">
+        <form
+          (submit)="handleFormSubmit($event)"
+          ngNativeValidate
+          style="border-width: 0ch; margin: auto"
+        >
+          <div style="text-align: left">
+            <label for="uname" style="font-weight: bolder"
+              ><b> USERNAME</b></label
+            >
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="uname"
+              [(ngModel)]="username"
+              required
+            />
+          </div>
+
+          <br />
+          <div style="text-align: left">
+            <h3>
+              <label for="psw1" style="font-weight: bolder"
+                ><b>PASSWORD</b></label
+              >
+            </h3>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw1"
+              [(ngModel)]="password"
+              required
+            />
+          </div>
+          <br />
+
+          <div>
+            <label
+              style="
+                margin-top: 10px;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-weight: bolder;
+              "
+            >
+              <input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
+              Remember me
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            style="
+              margin-bottom: 20px;
+              font-family: Georgia, 'Times New Roman', Times, serif;
+              font-weight: bolder;
+              border-radius: 12px;
+              background-color: rgb(249, 192, 86);
+              color: black;
+            "
+          >
+            LOGIN
+          </button>
+
+          <button
+            type="reset"
+            style="
+              background-color: crimson;
+              margin-left: 10px;
+              margin-bottom: 20px;
+              font-weight: bolder;
+              border-radius: 12px;
+            "
+          >
+            CANCEL
+          </button>
+        </form>
       </div>
-
-      <br />
-      <div>
-        <label for="psw1" style="margin-left: 300px"><b>Password</b></label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="psw1"
-          [(ngModel)]="password"
-          required
-        />
-      </div>
-      <br />
-      <br />
-      <div>
-        <label style="margin-left: 300px; margin-top: 20px">
-          <input type="checkbox" name="remember" [(ngModel)]="rememberMe" />
-          Remember me
-        </label>
-      </div>
-      <br />
-
-      <button type="submit">Login</button>
-
-      <button
-        type="reset"
-        style="background-color: darkred; margin-left: 150px"
-      >
-        Cancel
-      </button>
     </form>
   </div>
-</form>
+</div>

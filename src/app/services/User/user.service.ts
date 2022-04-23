@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of, Subject } from 'rxjs';
-import { API_PATH } from 'src/app/constants/IMPData';
-import { User } from 'src/app/models/Models';
+import { API_PATH, TOKEN_PREFIX } from 'src/app/constants/IMPData';
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +9,19 @@ import { User } from 'src/app/models/Models';
 export class UserService {
   user: any[];
 
-  subject = new Subject<any>();
-
   constructor(private http: HttpClient) {
     this.user = [];
-    this.subject.subscribe({
-      next: (v) => console.log(`observerA: ${v}`),
-    });
+
+    if (localStorage.getItem('token') !== null) {
+      const userData = {
+        email: localStorage.getItem('email'),
+        id: localStorage.getItem('id'),
+        role: localStorage.getItem('role'),
+        username: localStorage.getItem('username'),
+        name: localStorage.getItem('name'),
+      };
+      this.user.push(userData);
+    }
   }
 
   getCurrentUser() {
@@ -26,26 +31,13 @@ export class UserService {
   signupUser(user: any) {
     console.log('USER SERVICE: Signup User: ', user);
 
-    this.http
-      .post(`${API_PATH}/auth/signup`, {
-        username: user.username,
-        password: user.password,
-        email: user.email,
-        name: user.name,
-      })
-      .subscribe(
-        (result: any) => {
-          console.log(result);
-          if (result.isDone) {
-            console.log('Account Created Successfully');
-          } else {
-            console.log(result.err.writeErrors[0].errmsg);
-          }
-        },
-        (error) => {
-          console.log('Error Occured: ', error.error.msg);
-        }
-      );
+    return this.http.post(`${API_PATH}/auth/signup`, {
+      username: user.username,
+      password: user.password,
+      phoneNo: user.phoneNo,
+      email: user.email,
+      name: user.name,
+    });
   }
 
   loginUser(user: any) {
@@ -55,5 +47,56 @@ export class UserService {
       username: user.username,
       password: user.password,
     });
+  }
+
+  logoutUser() {
+    return this.user.splice(0, 1);
+  }
+
+  // Account settings
+  getCurrentUserData() {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/user/userdata`,
+      {},
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
+  }
+
+  updateAccountDetails(data: any) {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/user/updatedata`,
+      {
+        data: data,
+      },
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
+  }
+
+  changeUserPassword(data: any) {
+    const jwt_token = localStorage.getItem('token');
+
+    return this.http.post(
+      `${API_PATH}/user/changepassword`,
+      {
+        data: { oldpassword: data.oldPassword, newpassword: data.newPassword },
+      },
+      {
+        headers: {
+          authorization: `${TOKEN_PREFIX} ${jwt_token}`,
+        },
+      }
+    );
   }
 }

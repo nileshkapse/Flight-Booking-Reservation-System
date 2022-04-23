@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
@@ -7,6 +9,7 @@ import { UserService } from 'src/app/services/User/user.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
+  user: any[];
   name: string;
   email: string;
   phoneNo: string;
@@ -14,7 +17,12 @@ export class SignupComponent implements OnInit {
   repeatPassword: string;
   rememberMe: boolean;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private router: Router,
+    private userService: UserService,
+    private toastr: ToastrService
+  ) {
+    this.user = [];
     this.name = '';
     this.email = '';
     this.phoneNo = '';
@@ -23,12 +31,21 @@ export class SignupComponent implements OnInit {
     this.rememberMe = false;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService.getCurrentUser().subscribe((userData) => {
+      this.user = userData;
+    });
+
+    if (this.user.length > 0) {
+      this.router.navigate(['/']);
+    }
+  }
 
   handleFormSubmit(event: Event) {
     event.preventDefault();
 
     if (this.password !== this.repeatPassword) {
+      this.toastr.error('Error', 'Password not matched');
       return console.log('Password not matched');
     }
 
@@ -39,18 +56,34 @@ export class SignupComponent implements OnInit {
       name: this.name,
       username: username,
       email: this.email,
+      phoneNo: this.phoneNo,
       password: this.password,
       rememberMe: this.rememberMe,
     };
 
-    this.userService.signupUser(newData);
+    this.userService.signupUser(newData).subscribe(
+      (result: any) => {
+        console.log(result);
+        if (result.isDone) {
+          console.log('Account Created Successfully');
 
-    console.log('User Signup Data: ', newData);
+          this.name = '';
+          this.email = '';
+          this.phoneNo = '';
+          this.password = '';
+          this.repeatPassword = '';
+          this.rememberMe = false;
 
-    this.email = '';
-    this.phoneNo = '';
-    this.password = '';
-    this.repeatPassword = '';
-    this.rememberMe = false;
+          this.toastr.success('Account Created Successfully', 'Please Login');
+        } else {
+          console.log('Error', result.err.writeErrors[0].errmsg);
+          this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+        }
+      },
+      (error) => {
+        console.log('Error Occured: ', error.error.msg);
+        this.toastr.error('Error', error.error.msg);
+      }
+    );
   }
 }
