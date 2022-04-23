@@ -96,7 +96,15 @@ export class FlightBookingComponent implements OnInit {
       (result: any) => {
         console.log('Fetched: ', result.data);
         this.flightService.flights.splice(0, this.flightService.flights.length);
-        this.flightService.flights.push(...result.data);
+        this.flightService.nextFlights.splice(
+          0,
+          this.flightService.nextFlights.length
+        );
+
+        this.flightService.flights.push(...result.data.departureDateFlights);
+        this.flightService.nextFlights.push(
+          ...result.data.afterDepartureDateFlights
+        );
         this.router.navigate(['/flights']);
       },
       (error) => {

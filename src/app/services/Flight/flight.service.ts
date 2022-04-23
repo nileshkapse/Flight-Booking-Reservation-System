@@ -8,12 +8,14 @@ import { API_PATH, TOKEN_PREFIX } from 'src/app/constants/IMPData';
 })
 export class FlightService {
   flights: any[];
+  nextFlights: any[];
   selectedFlight: any[];
   bookedFlight: any[];
   flightHistory: any[];
 
   constructor(private http: HttpClient) {
     this.flights = [];
+    this.nextFlights = [];
     this.selectedFlight = [];
     this.bookedFlight = [];
     this.flightHistory = [];
@@ -21,6 +23,10 @@ export class FlightService {
 
   getFetchedFlights() {
     return of(this.flights);
+  }
+
+  getAfterDepartureDateFlights() {
+    return of(this.nextFlights);
   }
 
   getFlights(filterObject: any) {
