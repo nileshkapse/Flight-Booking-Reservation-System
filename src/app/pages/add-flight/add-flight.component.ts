@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ADMIN_ROLE } from 'src/app/constants/IMPData';
 import { FlightService } from 'src/app/services/Flight/flight.service';
+import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
   selector: 'app-add-flight',
@@ -8,6 +11,8 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
   styleUrls: ['./add-flight.component.css'],
 })
 export class AddFlightComponent implements OnInit {
+  user: any[];
+
   flightName = '';
   origin = '';
   destination = '';
@@ -31,11 +36,26 @@ export class AddFlightComponent implements OnInit {
   firstClassTicketPrice = '';
 
   constructor(
+    private userService: UserService,
     private flightService: FlightService,
-    private toastr: ToastrService
-  ) {}
+    private toastr: ToastrService,
+    private router: Router
+  ) {
+    this.user = [];
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userService
+      .getCurrentUser()
+      .subscribe((userData) => (this.user = userData));
+
+    if (this.user.length > 0) {
+      if (this.user[0].role !== ADMIN_ROLE) {
+        this.router.navigate(['/']);
+        return;
+      }
+    }
+  }
 
   handleFormSubmit(event: Event) {
     event.preventDefault();
