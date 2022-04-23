@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlightService } from 'src/app/services/Flight/flight.service';
@@ -11,8 +12,13 @@ export class FlightDetailsComponent implements OnInit {
   selectedFlight: any[];
   totalSeats = 0;
   remainingSeats = 0;
+  isBookingDisabled = false;
 
-  constructor(private flightService: FlightService, private router: Router) {
+  constructor(
+    private flightService: FlightService,
+    private router: Router,
+    private datePipe: DatePipe
+  ) {
     this.selectedFlight = [];
   }
 
@@ -23,6 +29,15 @@ export class FlightDetailsComponent implements OnInit {
 
     if (this.selectedFlight.length === 0) {
       this.router.navigate(['/flight-booking']);
+      return;
+    }
+
+    const currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+
+    if (currentDate !== null) {
+      if (this.selectedFlight[0].departureDate < currentDate) {
+        this.isBookingDisabled = true;
+      }
     }
   }
 

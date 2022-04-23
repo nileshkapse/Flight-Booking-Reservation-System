@@ -26,6 +26,7 @@ import { FlightTicketsComponent } from './pages/flight-tickets/flight-tickets.co
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactUsComponent } from './pages/contact-us/contact-us.component';
 import { DisplayIssuesComponent } from './pages/display-issues/display-issues.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { DisplayIssuesComponent } from './pages/display-issues/display-issues.co
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
