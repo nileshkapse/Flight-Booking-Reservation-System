@@ -24,6 +24,12 @@ export class FlightsComponent implements OnInit {
     this.flightService
       .getAfterDepartureDateFlights()
       .subscribe((nextFlightData) => (this.nextFlights = nextFlightData));
+
+    if (this.flights.length > 0) {
+      this.nextFlights = this.nextFlights.filter(
+        (item) => item.departureDate !== this.flights[0].departureDate
+      );
+    }
   }
 
   displayFlight(flight: any) {
