@@ -98,7 +98,7 @@ export class FlightTicketsComponent implements OnInit {
     }
 
     if (this.isBusinessClass) {
-      if (this.economyClassTickets === '') {
+      if (this.businessClassTickets === '') {
         this.toastr.warning('Please enter business class details');
         return console.log('Please enter business class details');
       }
@@ -119,7 +119,7 @@ export class FlightTicketsComponent implements OnInit {
     }
 
     if (this.isFirstClass) {
-      if (this.economyClassTickets === '') {
+      if (this.firstClassTickets === '') {
         this.toastr.warning('Please enter first class details');
         return console.log('Please enter first class details');
       }
