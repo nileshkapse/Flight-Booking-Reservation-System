@@ -10,6 +10,8 @@ import { IssueService } from 'src/app/services/Issue/issue.service';
 export class ReportComponent implements OnInit {
   issue: string;
 
+  displayModal = false;
+
   constructor(
     private issueService: IssueService,
     private toastr: ToastrService
@@ -20,6 +22,7 @@ export class ReportComponent implements OnInit {
   ngOnInit(): void {}
 
   handleFormSubmit() {
+    this.displayModal = true;
     this.issueService.addIssue(this.issue).subscribe(
       (result: any) => {
         console.log(result);
@@ -31,10 +34,13 @@ export class ReportComponent implements OnInit {
           console.log('Error', result.err.writeErrors[0].errmsg);
           this.toastr.error('Error', result.err.writeErrors[0].errmsg);
         }
+
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }
