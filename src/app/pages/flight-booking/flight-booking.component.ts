@@ -21,6 +21,9 @@ export class FlightBookingComponent implements OnInit {
   childrenCount: number;
 
   flightClass: string;
+
+  displayModal = false;
+
   constructor(
     private router: Router,
     private flightService: FlightService,
@@ -92,6 +95,8 @@ export class FlightBookingComponent implements OnInit {
     console.log('Flight Object: ', newFlightBookingObject);
     console.log('Flight Fitler Object: ', newFlightBookingFilterObject);
 
+    this.displayModal = true;
+
     this.flightService.getFlights(newFlightBookingFilterObject).subscribe(
       (result: any) => {
         console.log('Fetched: ', result.data);
@@ -105,10 +110,14 @@ export class FlightBookingComponent implements OnInit {
         this.flightService.nextFlights.push(
           ...result.data.afterDepartureDateFlights
         );
+
+        this.displayModal = false;
         this.router.navigate(['/flights']);
       },
       (error) => {
+        this.toastr.error('Error');
         console.log('Error Occured: ', error.error.msg);
+        this.displayModal = false;
       }
     );
   }
