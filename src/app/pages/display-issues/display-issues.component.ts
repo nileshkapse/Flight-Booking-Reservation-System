@@ -13,6 +13,8 @@ import { UserService } from 'src/app/services/User/user.service';
 export class DisplayIssuesComponent implements OnInit {
   user: any[];
   issues: any[];
+
+  displayModal = false;
   constructor(
     private toastr: ToastrService,
     private issueService: IssueService,
@@ -35,6 +37,8 @@ export class DisplayIssuesComponent implements OnInit {
       }
     }
 
+    this.displayModal = true;
+
     this.issueService.getIssues().subscribe(
       (result: any) => {
         console.log(result);
@@ -47,10 +51,12 @@ export class DisplayIssuesComponent implements OnInit {
           console.log('Error', result.err.writeErrors[0].errmsg);
           this.toastr.error('Error', result.err.writeErrors[0].errmsg);
         }
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }
