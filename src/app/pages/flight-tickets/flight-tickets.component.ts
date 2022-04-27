@@ -33,6 +33,7 @@ export class FlightTicketsComponent implements OnInit {
   finalTotalPrice = 0;
   finalTotalTickets = 0;
 
+  displayModal = false;
   constructor(
     private flightService: FlightService,
     private toastr: ToastrService,
@@ -147,6 +148,7 @@ export class FlightTicketsComponent implements OnInit {
 
     console.log('Final Book Flight: ', this.finalBookingObject);
 
+    this.displayModal = true;
     this.flightService.bookNewFlight(this.finalBookingObject).subscribe(
       (result: any) => {
         console.log(result);
@@ -154,17 +156,20 @@ export class FlightTicketsComponent implements OnInit {
           console.log('Flight Booked Successfully');
 
           this.toastr.success('Flight Booked Successfully', 'Please Login');
+          this.displayModal = false;
           this.router.navigate(['/flight-receipt']);
           this.flightService.bookedFlight.splice(0, 1);
           this.flightService.bookedFlight.push([...result.data]);
         } else {
           console.log('Error', result.err);
           this.toastr.error('Error', result.err);
+          this.displayModal = false;
         }
       },
       (error) => {
         console.log('Error Occured: ', error.message);
         this.toastr.error('Error', error.message);
+        this.displayModal = false;
       }
     );
   }
