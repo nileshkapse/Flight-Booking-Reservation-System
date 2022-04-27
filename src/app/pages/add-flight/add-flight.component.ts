@@ -35,6 +35,8 @@ export class AddFlightComponent implements OnInit {
   firstClassSeats = '';
   firstClassTicketPrice = '';
 
+  displayModal = false;
+
   constructor(
     private userService: UserService,
     private flightService: FlightService,
@@ -134,6 +136,8 @@ export class AddFlightComponent implements OnInit {
 
     console.log('New Flight Data: ', newFlightObject);
 
+    this.displayModal = true;
+
     this.flightService.addNewFligt(newFlightObject).subscribe(
       (result: any) => {
         console.log(result);
@@ -167,10 +171,13 @@ export class AddFlightComponent implements OnInit {
           console.log('Error', result.err);
           this.toastr.error('Error', result.err);
         }
+
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }
