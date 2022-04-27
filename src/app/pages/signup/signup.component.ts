@@ -17,6 +17,8 @@ export class SignupComponent implements OnInit {
   repeatPassword: string;
   rememberMe: boolean;
 
+  displayModal = false;
+
   constructor(
     private router: Router,
     private userService: UserService,
@@ -61,6 +63,7 @@ export class SignupComponent implements OnInit {
       rememberMe: this.rememberMe,
     };
 
+    this.displayModal = true;
     this.userService.signupUser(newData).subscribe(
       (result: any) => {
         console.log(result);
@@ -79,10 +82,12 @@ export class SignupComponent implements OnInit {
           console.log('Error', result.err.writeErrors[0].errmsg);
           this.toastr.error('Error', result.err.writeErrors[0].errmsg);
         }
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }
