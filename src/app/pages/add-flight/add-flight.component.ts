@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ADMIN_ROLE } from 'src/app/constants/IMPData';
 import { FlightService } from 'src/app/services/Flight/flight.service';
+import { UserService } from 'src/app/services/User/user.service';
 
 @Component({
   selector: 'app-add-flight',
@@ -8,6 +11,8 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
   styleUrls: ['./add-flight.component.css'],
 })
 export class AddFlightComponent implements OnInit {
+  user: any[];
+
   flightName = '';
   origin = '';
   destination = '';
@@ -30,12 +35,29 @@ export class AddFlightComponent implements OnInit {
   firstClassSeats = '';
   firstClassTicketPrice = '';
 
-  constructor(
-    private flightService: FlightService,
-    private toastr: ToastrService
-  ) {}
+  displayModal = false;
 
-  ngOnInit(): void {}
+  constructor(
+    private userService: UserService,
+    private flightService: FlightService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
+    this.user = [];
+  }
+
+  ngOnInit(): void {
+    this.userService
+      .getCurrentUser()
+      .subscribe((userData) => (this.user = userData));
+
+    if (this.user.length > 0) {
+      if (this.user[0].role !== ADMIN_ROLE) {
+        this.router.navigate(['/']);
+        return;
+      }
+    }
+  }
 
   handleFormSubmit(event: Event) {
     event.preventDefault();
@@ -114,6 +136,8 @@ export class AddFlightComponent implements OnInit {
 
     console.log('New Flight Data: ', newFlightObject);
 
+    this.displayModal = true;
+
     this.flightService.addNewFligt(newFlightObject).subscribe(
       (result: any) => {
         console.log(result);
@@ -147,10 +171,13 @@ export class AddFlightComponent implements OnInit {
           console.log('Error', result.err);
           this.toastr.error('Error', result.err);
         }
+
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }

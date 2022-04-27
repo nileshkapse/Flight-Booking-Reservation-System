@@ -91,6 +91,7 @@
             class="btn btn-primary m-4"
             style="width: 100%"
             (click)="handleBookFlight()"
+            [disabled]="isBookingDisabled"
           >
             Book Flight
           </button>

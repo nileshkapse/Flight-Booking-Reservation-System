@@ -9,6 +9,8 @@ import { UserService } from 'src/app/services/User/user.service';
   styleUrls: ['./account-settings.component.css'],
 })
 export class AccountSettingsComponent implements OnInit {
+  displayModal = false;
+
   currentUserData: any[];
 
   // Update Account Details Variables
@@ -44,6 +46,8 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayModal = true;
+
     this.userService.getCurrentUserData().subscribe(
       (result: any) => {
         console.log(result);
@@ -60,10 +64,12 @@ export class AccountSettingsComponent implements OnInit {
           console.log('Error', result.err.writeErrors[0].errmsg);
           this.toastr.error('Error', result.err.writeErrors[0].errmsg);
         }
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }
@@ -76,6 +82,7 @@ export class AccountSettingsComponent implements OnInit {
       phoneNo: this.phoneNo,
     };
 
+    this.displayModal = true;
     this.userService.updateAccountDetails(newData).subscribe(
       (result: any) => {
         console.log(result);
@@ -86,10 +93,12 @@ export class AccountSettingsComponent implements OnInit {
           console.log('Error', 'Failed to update details');
           this.toastr.error('Error', 'Failed to update details');
         }
+        this.displayModal = false;
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
     console.log(newData);
@@ -108,18 +117,23 @@ export class AccountSettingsComponent implements OnInit {
     };
 
     console.log(newData);
+
+    this.displayModal = true;
+
     this.userService.changeUserPassword(newData).subscribe(
       (result: any) => {
         console.log(result);
 
         if (result.isError) {
           this.toastr.error('Error', result.msg);
+          this.displayModal = false;
           return console.log(result.msg);
         }
 
         if (result.hasOwnProperty('isAuthorized')) {
           if (!result.isAuthorized) {
             this.toastr.error('Password Authentication Error', result.msg);
+            this.displayModal = false;
             return console.log(result.msg);
           }
         }
@@ -131,15 +145,19 @@ export class AccountSettingsComponent implements OnInit {
 
           localStorage.clear();
           this.userService.logoutUser();
+          this.displayModal = false;
+
           this.router.navigate(['/login-page']);
         } else {
           console.log('Error', 'Failed to change password');
           this.toastr.error('Error', 'Failed to change password');
+          this.displayModal = false;
         }
       },
       (err) => {
         console.log(err);
         this.toastr.error('Error', err);
+        this.displayModal = false;
       }
     );
   }

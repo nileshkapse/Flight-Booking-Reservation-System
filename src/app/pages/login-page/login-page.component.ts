@@ -14,6 +14,8 @@ export class LoginPageComponent implements OnInit {
   password: string;
   rememberMe: boolean;
 
+  displayModal = false;
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -44,18 +46,21 @@ export class LoginPageComponent implements OnInit {
       rememberMe: this.rememberMe,
     };
 
+    this.displayModal = true;
     this.userService.loginUser(newData).subscribe(
       (result: any) => {
         console.log(result);
 
         if (result.isError) {
           this.toastr.error('Error', result.msg);
+          this.displayModal = false;
           return console.log(result.msg);
         }
 
         if (result.hasOwnProperty('isAuthorized')) {
           if (!result.isAuthorized) {
             this.toastr.error('Error', result.msg);
+            this.displayModal = false;
             return console.log(result.msg);
           }
         }
@@ -87,11 +92,14 @@ export class LoginPageComponent implements OnInit {
         this.password = '';
         this.rememberMe = false;
 
+        this.displayModal = false;
+
         this.router.navigate(['']);
       },
       (err) => {
         console.log(err);
         this.toastr.error('Error', err);
+        this.displayModal = false;
       }
     );
   }

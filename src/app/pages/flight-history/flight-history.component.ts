@@ -11,6 +11,7 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
 export class FlightHistoryComponent implements OnInit {
   flightHistory: any[];
 
+  displayModal = false;
   constructor(
     private router: Router,
     private flightService: FlightService,
@@ -20,6 +21,8 @@ export class FlightHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.displayModal = true;
+
     this.flightService.getFlightBookingHistory().subscribe(
       (result: any) => {
         console.log(result);
@@ -30,14 +33,17 @@ export class FlightHistoryComponent implements OnInit {
 
           this.flightHistory = result.data;
           this.flightService.flightHistory = result.data;
+          this.displayModal = false;
         } else {
           console.log('Error', result.err.writeErrors[0].errmsg);
           this.toastr.error('Error', result.err.writeErrors[0].errmsg);
+          this.displayModal = false;
         }
       },
       (error) => {
         console.log('Error Occured: ', error.error.msg);
         this.toastr.error('Error', error.error.msg);
+        this.displayModal = false;
       }
     );
   }

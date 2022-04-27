@@ -9,7 +9,10 @@ import { FlightService } from 'src/app/services/Flight/flight.service';
 })
 export class FlightsComponent implements OnInit {
   flights: any[];
+  nextFlights: any[];
+
   constructor(private flightService: FlightService, private router: Router) {
+    this.nextFlights = [];
     this.flights = [];
   }
 
@@ -17,6 +20,16 @@ export class FlightsComponent implements OnInit {
     this.flightService
       .getFetchedFlights()
       .subscribe((flightsData) => (this.flights = flightsData));
+
+    this.flightService
+      .getAfterDepartureDateFlights()
+      .subscribe((nextFlightData) => (this.nextFlights = nextFlightData));
+
+    if (this.flights.length > 0) {
+      this.nextFlights = this.nextFlights.filter(
+        (item) => item.departureDate !== this.flights[0].departureDate
+      );
+    }
   }
 
   displayFlight(flight: any) {
