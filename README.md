@@ -1,5 +1,5 @@
 # Flight-Booking-Reservation-System ✈️
-[![GitHub Forks](https://img.shields.io/github/forks/nileshkapse/Flight-Booking-Reservation-System.svg?style=social&label=Fork&maxAge=2592000)]
+[![GitHub Forks](https://img.shields.io/github/forks/nileshkapse/Flight-Booking-Reservation-System.svg?style=social&label=Fork&maxAge=2592000)](https://www.github.com/nileshkapse/Flight-Booking-Reservation-System/fork)
 [![GitHub Issues](https://img.shields.io/github/issues/nileshkapse/Flight-Booking-Reservation-System?style=flat&label=Issues&maxAge=2592000)](https://www.github.com/nileshkapse/Flight-Booking-Reservation-System/issues)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&label=Contributions&colorA=red&colorB=black	)](#)
 
