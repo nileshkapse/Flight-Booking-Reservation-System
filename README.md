@@ -1,5 +1,7 @@
 # Flight-Booking-Reservation-System ✈️
 
+views Open Source Love svg1 GitHub Forks GitHub Issues contributions welcome
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
 ## Development server
