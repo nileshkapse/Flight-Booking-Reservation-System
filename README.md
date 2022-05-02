@@ -1,6 +1,5 @@
 # Flight-Booking-Reservation-System ✈️
-
-views Open Source Love svg1 GitHub Forks GitHub Issues contributions welcome
+[![GitHub Forks](https://img.shields.io/github/forks/nileshkapse/Flight-Booking-Reservation-System.svg?style=social&label=Fork&maxAge=2592000)]
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
